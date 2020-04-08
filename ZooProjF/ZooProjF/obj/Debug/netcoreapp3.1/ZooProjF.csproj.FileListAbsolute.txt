@@ -351,3 +351,12 @@ C:\Users\Max\Desktop\ZooProjF\ZooProjF\obj\Debug\netcoreapp3.1\ZooProjF.csproj.C
 C:\Users\Max\Desktop\ZooProjF\ZooProjF\obj\Debug\netcoreapp3.1\staticwebassets\ZooProjF.StaticWebAssets.Manifest.cache
 C:\Users\Max\Desktop\ZooProjF\ZooProjF\obj\Debug\netcoreapp3.1\staticwebassets\ZooProjF.StaticWebAssets.xml
 C:\Users\Max\Desktop\ZooProjF\ZooProjF\obj\Debug\netcoreapp3.1\ZooProjF.genruntimeconfig.cache
+C:\Users\Max\source\repos\Databases-Project\ZooProjF\ZooProjF\obj\Debug\netcoreapp3.1\ZooProjF.csprojAssemblyReference.cache
+C:\Users\Max\source\repos\Databases-Project\ZooProjF\ZooProjF\obj\Debug\netcoreapp3.1\ZooProjF.csproj.CoreCompileInputs.cache
+C:\Users\Max\source\repos\Databases-Project\ZooProjF\ZooProjF\obj\Debug\netcoreapp3.1\ZooProjF.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Max\source\repos\Databases-Project\ZooProjF\ZooProjF\obj\Debug\netcoreapp3.1\ZooProjF.RazorAssemblyInfo.cache
+C:\Users\Max\source\repos\Databases-Project\ZooProjF\ZooProjF\obj\Debug\netcoreapp3.1\ZooProjF.RazorAssemblyInfo.cs
+C:\Users\Max\source\repos\Databases-Project\ZooProjF\ZooProjF\obj\Debug\netcoreapp3.1\ZooProjF.AssemblyInfoInputs.cache
+C:\Users\Max\source\repos\Databases-Project\ZooProjF\ZooProjF\obj\Debug\netcoreapp3.1\ZooProjF.AssemblyInfo.cs
+C:\Users\Max\source\repos\Databases-Project\ZooProjF\ZooProjF\obj\Debug\netcoreapp3.1\ZooProjF.dll
+C:\Users\Max\source\repos\Databases-Project\ZooProjF\ZooProjF\obj\Debug\netcoreapp3.1\ZooProjF.pdb
