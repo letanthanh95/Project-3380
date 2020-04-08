@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+//using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ZooProjF.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using ZooProjF.ViewModels;
 
 namespace ZooProjF.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController: Controller
     {
         private readonly ILogger<HomeController> _logger;
-
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
-
         public IActionResult Index()
         {
             return View();
         }
-
-
         public IActionResult TicketIndex()
         {
             return View();
@@ -40,7 +40,7 @@ namespace ZooProjF.Controllers
         {
             return View();
         }
-
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
