@@ -204,7 +204,7 @@
 
   <ItemGroup>
     <Reference Include="System.Data.Linq">
-      <HintPath>..\..\System.Data.Linq.dll</HintPath>
+      <HintPath>obj\System.Data.Linq.dll</HintPath>
     </Reference>
   </ItemGroup>
 

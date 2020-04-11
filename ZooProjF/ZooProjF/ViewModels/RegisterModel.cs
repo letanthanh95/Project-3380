@@ -11,6 +11,7 @@ namespace ZooProjF.ViewModels
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
         [RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z)-9-]+\.[a-zA-Z0-9-.]+$")]
@@ -20,6 +21,7 @@ namespace ZooProjF.ViewModels
         [Display(Name ="Confrim password")]
         [Compare("Password",ErrorMessage ="Password and confrimation password do not match")]
         public string ConfirmPassword { get; set; }
+
         public string First_name { get; internal set; }
         public string Last_Name { get; internal set; }
         public int Phone_Number { get; internal set; }
