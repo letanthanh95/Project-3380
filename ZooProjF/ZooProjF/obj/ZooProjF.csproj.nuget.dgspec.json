@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Max\\source\\repos\\Databases-Project\\ZooProjF\\ZooProjF\\ZooProjF.csproj": {}
+    "C:\\Users\\Siu_Nhan\\Desktop\\Databases-Project\\ZooProjF\\ZooProjF\\ZooProjF.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Max\\source\\repos\\Databases-Project\\ZooProjF\\ZooProjF\\ZooProjF.csproj": {
+    "C:\\Users\\Siu_Nhan\\Desktop\\Databases-Project\\ZooProjF\\ZooProjF\\ZooProjF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Max\\source\\repos\\Databases-Project\\ZooProjF\\ZooProjF\\ZooProjF.csproj",
+        "projectUniqueName": "C:\\Users\\Siu_Nhan\\Desktop\\Databases-Project\\ZooProjF\\ZooProjF\\ZooProjF.csproj",
         "projectName": "ZooProjF",
-        "projectPath": "C:\\Users\\Max\\source\\repos\\Databases-Project\\ZooProjF\\ZooProjF\\ZooProjF.csproj",
-        "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Max\\source\\repos\\Databases-Project\\ZooProjF\\ZooProjF\\obj\\",
+        "projectPath": "C:\\Users\\Siu_Nhan\\Desktop\\Databases-Project\\ZooProjF\\ZooProjF\\ZooProjF.csproj",
+        "packagesPath": "C:\\Users\\Siu_Nhan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Siu_Nhan\\Desktop\\Databases-Project\\ZooProjF\\ZooProjF\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Max\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Siu_Nhan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,7 +25,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Users\\Siu_Nhan\\Desktop\\dsad": {},
+          "http://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
