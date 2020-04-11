@@ -19,7 +19,6 @@ namespace ZooProjF.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-
         /*private readonly ICustomerRepository _customerRepository;
         public HomeController(ICustomerRepository customerRepository,ILogger<HomeController> logger)
         {
@@ -37,34 +36,30 @@ namespace ZooProjF.Controllers
             return View();
         }
 
-
         public IActionResult TicketIndex()
         {
             return View();
         }
+
         public IActionResult ShopIndex()
         {
             return View();
         }
+
         public IActionResult Checkout()
         {
             return View();
         }
+
         public IActionResult Cart()
         {
             return View();
         }
-
-
-        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        
-
     }
-    
 }
