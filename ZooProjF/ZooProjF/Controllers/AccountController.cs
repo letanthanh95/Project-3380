@@ -10,72 +10,116 @@ using Microsoft.Extensions.Logging;
 using ZooProjF.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using ZooProjF.ViewModels;
+using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Http;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ZooProjF.Controllers
 {
+   
     public class AccountController : Controller
     {
-        // GET: /<controller>/
-        private readonly UserManager<IdentityUser> userManager;
-        private readonly SignInManager<IdentityUser> signInManager;
-        public AccountController(UserManager<IdentityUser> userManager,
-                                                            SignInManager<IdentityUser> signInManager)
+        private readonly AppDbContext _dbContext;
+        private AppDbContext context;
+
+        public AccountController(AppDbContext context)
         {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
+            _dbContext = context;
         }
-        [HttpGet]
-        public IActionResult Register()
+
+        void setDbContext()
         {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterModel model)
-        {
-            if (ModelState.IsValid)
+            if (context==null)
             {
-                var user = new IdentityUser { UserName = model.Email, Email = model.Email };
-                var result = await userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
+                context = HttpContext.RequestServices.GetService(typeof(AppDbContext)) as AppDbContext;
             }
-            return View(model);
         }
+
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-
-                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
-
-                if (result.Succeeded)
+                var customermanagerment = await _dbContext.CustomerManagerment.FirstOrDefaultAsync
+                    (m => m.Email==model.Email &&m.Password==model.Password);
+                if(customermanagerment==null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    ModelState.AddModelError("Password", "Wrong Password.");
+                    return View("Login");
                 }
+                HttpContext.Session.SetString("Customer_Id", CustomerManagerment.Customer_Id);
+            }
+            else
+            {
+                return View("Login");
+            }
+            return RedirectToAction("Index", "Home");
+        }
 
-
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+        [HttpPost]
+        public async Task<IActionResult>Resgister(RegisterModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                CustomerManagerment customer = new CustomerManagerment
+                {
+                    Customer_ID = model.Customer_ID,
+                    First_Name = model.First_name,
+                    Last_Name = model.Last_Name,
+                    Phone_Number = model.Phone_Number,
+                    Email = model.Email,
+                    Street_Name = model.Street_Name,
+                    Zip_Code = model.Zip_Code,
+                    City = model.City,
+                    State = model.State,
+                    Password = model.Password,
+                };
+                _dbContext.Add(customer);
+                await _dbContext.SaveChangesAsync();
 
             }
-            return View(model);
+            else
+            {
+                return View("Register");
+            }
+            return RedirectToAction("Index", "Account");
         }
-        public IActionResult Index()
+
+        public IActionResult Register()
         {
+            ViewData["Message"] = "Registration Page";
             return View();
         }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return View("Index");
+        }
+
+        public void ValidationMessage(string key,string alert,string value)
+        {
+            try
+            {
+                TempData.Remove(key);
+                TempData.Add(key, value);
+                TempData.Add("alertType", alert);
+
+            }
+            catch
+            {
+                Debug.WriteLine("TempDataMessage Error");
+            }
+        }
     }
+    
+    
 }

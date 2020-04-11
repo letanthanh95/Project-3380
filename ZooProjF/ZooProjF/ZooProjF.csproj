@@ -1,5 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
+	
+	
+	<Target Name="ChangeAliasesOfStrongNameAssemblies" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
+		<ItemGroup>
+			<ReferencePath Condition="'%(FileName)' == 'MySqlConnector'">
+				<Aliases>MySqlConnectorAlias</Aliases>
+			</ReferencePath>
+		</ItemGroup>
+	</Target> 
+	
+	
+	
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
@@ -153,35 +164,48 @@
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.4.1" />
     <PackageReference Include="EntityFramework" Version="6.4.0" />
-    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0-preview.2.20167.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0-preview.2.20159.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0-preview.2.20159.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.3" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.0-preview.2.20159.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0-preview.2.20159.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="2.0.0-preview1-final" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0-preview.2.20159.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0-preview.2.20160.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0-preview.2.20160.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="5.0.0-preview.2-runtime.20160.6" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.0-preview.2.20167.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0-preview.2.20160.3" />
     <PackageReference Include="Microsoft.IdentityModel.Logging" Version="6.5.0" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.8.3">
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.9.0-beta">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
-    <PackageReference Include="MySql.Data" Version="8.0.19" />
-    <PackageReference Include="MySQL.Data.Entities" Version="6.8.3" />
-    <PackageReference Include="MySql.Data.Entity" Version="6.10.9" />
-    <PackageReference Include="MySql.Data.EntityFramework" Version="8.0.19" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.19" />
-    <PackageReference Include="MySql.Data.EntityFrameworkCore.Design" Version="8.0.19" />
-    <PackageReference Include="MySql.Web" Version="8.0.19" />
+    <PackageReference Include="MySqlConnector" Version="0.63.1" />
+    <PackageReference Include="NuGet.DependencyResolver.Core" Version="5.6.0-preview.2.6489" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
+    <PackageReference Include="ServiceStack.Interfaces" Version="5.8.0" />
+    <PackageReference Include="SQLDependency.DBConnection" Version="1.0.0" />
+    <PackageReference Include="Stripe.net" Version="35.12.1" />
+    <PackageReference Include="System.Console" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\Content\images\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Data.Linq">
+      <HintPath>obj\System.Data.Linq.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
