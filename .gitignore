@@ -344,3 +344,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+*.csproj
+
+ZooProjF/ZooProjF/obj/
