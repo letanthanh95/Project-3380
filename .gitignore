@@ -213,11 +213,6 @@ _pkginfo.txt
 # but keep track of directories ending in .cache
 !?*.[Cc]ache/
 
-# NET MVC core
-*/**/bin/Debug
-*/**/bin/Release
-*/**/obj/Debug
-*/**/obj/Release
 
 # Others
 ClientBin/
@@ -344,6 +339,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
-*.csproj
 
-ZooProjF/ZooProjF/obj/
+
+*.dll
