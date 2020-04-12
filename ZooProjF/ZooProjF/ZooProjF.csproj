@@ -215,7 +215,7 @@
 
   <ItemGroup>
     <Reference Include="System.Data.Linq">
-      <HintPath>..\..\..\..\..\..\source\repos\Databases-Project\ZooProjF\ZooProjF\obj\System.Data.Linq.dll</HintPath>
+      <HintPath>..\..\System.Data.Linq.dll</HintPath>
     </Reference>
   </ItemGroup>
 

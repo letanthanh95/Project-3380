@@ -40,7 +40,7 @@ namespace ZooProjF.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(CustomerManagerment model)
         {
             if(ModelState.IsValid)
             {
@@ -51,7 +51,7 @@ namespace ZooProjF.Controllers
                     ModelState.AddModelError("Password", "Wrong Password.");
                     return View("Login");
                 }
-                HttpContext.Session.SetString("Customer_Id", customermanagerment.Customer_Id);
+                HttpContext.Session.SetString("First_Name", customermanagerment.First_Name);
             }
             else
             {
