@@ -55,6 +55,11 @@ namespace ZooProjF.Controllers
             return View();
         }
 
+        public IActionResult Exhibit()
+        {
+            return View();
+        }
+
 
         
 

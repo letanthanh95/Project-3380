@@ -64,7 +64,7 @@ namespace ZooProjF
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.Add(new ServiceDescriptor(typeof(CustomerContextcs), new CustomerContextcs(Configuration.GetConnectionString("DefaultConnection"))));
+            services.Add(new ServiceDescriptor(typeof(CustomerContext), new CustomerContext(Configuration.GetConnectionString("DefaultConnection"))));
 
             services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

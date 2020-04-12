@@ -13,11 +13,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ZooProjF.Data
 {
-    public class CustomerContextcs
+    public class CustomerContext
     {
         public string ConnectionString { get; set; }
 
-        public CustomerContextcs(string connectionString)
+        public CustomerContext(string connectionString)
         {
             this.ConnectionString = connectionString;
         }
@@ -26,15 +26,17 @@ namespace ZooProjF.Data
         {
             return new MySqlConnection(ConnectionString);
         }
+
         [HttpPost]
         public void getDataSet()
         {
             // DataSet dataset = new DataSet();
         }
+
         [HttpPost]
-        public List<CustomerManagerment> GetAllCustomer()
+        public List<CustomerManagement> GetAllCustomer()
         {
-            List<CustomerManagerment> list = new List<CustomerManagerment>();
+            List<CustomerManagement> list = new List<CustomerManagement>();
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
@@ -43,7 +45,7 @@ namespace ZooProjF.Data
                 {
                     while (reader.Read())
                     {
-                        list.Add(new CustomerManagerment()
+                        list.Add(new CustomerManagement()
                         {
                            //Customer_ID = Convert.ToInt32(reader["Customer_ID"]),
                            //Customer_ID = reader["Customer_ID"].ToString(),
@@ -56,13 +58,8 @@ namespace ZooProjF.Data
 
                             Street_Name = Convert.ToString(reader[5]),
                             //Zip_Code = Convert.ToInt64(reader[6]),
-
-
                             City = Convert.ToString(reader[7]),
-
                             State =Convert.ToString(reader[8]),
-
-
                         });
                     }
                 }
@@ -70,7 +67,7 @@ namespace ZooProjF.Data
             return list;
         }
         [HttpPost]
-        public int AddCustomerToDB(CustomerManagerment customer)
+        public int AddCustomerToDB(CustomerManagement customer)
         {
             try
             {
@@ -88,10 +85,7 @@ namespace ZooProjF.Data
             return -1;
         }
     }
-
-
-
-            }
+}
     
 
  

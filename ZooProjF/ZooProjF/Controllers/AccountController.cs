@@ -40,7 +40,7 @@ namespace ZooProjF.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(CustomerManagerment model)
+        public async Task<IActionResult> Login(CustomerManagement model)
         {
             if(ModelState.IsValid)
             {
@@ -64,7 +64,7 @@ namespace ZooProjF.Controllers
         {
             if(ModelState.IsValid)
             {
-                CustomerManagerment customer = new CustomerManagerment
+                CustomerManagement customer = new CustomerManagement
                 {
                     Customer_Id = model.Customer_Id,
                     First_Name = model.First_name,

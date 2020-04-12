@@ -20,24 +20,23 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ZooProjF.Controllers
 {
-    
-    
     public class DatabaseController:Controller
     {
-        private CustomerContextcs context;
+        private CustomerContext context;
         void setDbContext()
         {
             if (context==null)
             {
-                context = HttpContext.RequestServices.GetService(typeof(CustomerContextcs)) as CustomerContextcs;
+                context = HttpContext.RequestServices.GetService(typeof(CustomerContext)) as CustomerContext;
             }
         }
+
         public ActionResult Index()
         {
             setDbContext();
-            List<CustomerManagerment> customer = new List<CustomerManagerment>();
+            List<CustomerManagement> customer = new List<CustomerManagement>();
             customer = context.GetAllCustomer();
-            List<CustomerManagerment> fullcustomer = (from Customer in customer select new CustomerManagerment
+            List<CustomerManagement> fullcustomer = (from Customer in customer select new CustomerManagement
             {
                 Customer_Id= Customer.Customer_Id,
                 First_Name = Customer.First_Name,
@@ -49,18 +48,18 @@ namespace ZooProjF.Controllers
                 City = Customer.City,
                 State = Customer.State
 
-
-            }).ToList<CustomerManagerment>();
+            }).ToList<CustomerManagement>();
             return View(fullcustomer);
         }
+
         public ActionResult Create()
         {
-
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([FromForm]CustomerManagerment customer)
+        public ActionResult Create([FromForm]CustomerManagement customer)
         {
             try
             {
@@ -70,8 +69,6 @@ namespace ZooProjF.Controllers
 
                 int status = context.AddCustomerToDB(customer);
                 
-                                                          
-
                 return RedirectToAction("Index");
             }
             catch
@@ -79,6 +76,7 @@ namespace ZooProjF.Controllers
                 return View();
             }
         }
+
         public ActionResult Edit(int id)
         {
             return View();
@@ -124,10 +122,4 @@ namespace ZooProjF.Controllers
             }
         }
     }
-
-
-
-
 }
-   
-
