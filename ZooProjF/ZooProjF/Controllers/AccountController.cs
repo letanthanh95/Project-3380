@@ -23,12 +23,10 @@ namespace ZooProjF.Controllers
     {
         private readonly AppDbContext _dbContext;
         private AppDbContext context;
-
         public AccountController(AppDbContext context)
         {
             _dbContext = context;
         }
-
         void setDbContext()
         {
             if (context==null)
@@ -36,13 +34,11 @@ namespace ZooProjF.Controllers
                 context = HttpContext.RequestServices.GetService(typeof(AppDbContext)) as AppDbContext;
             }
         }
-
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -55,7 +51,7 @@ namespace ZooProjF.Controllers
                     ModelState.AddModelError("Password", "Wrong Password.");
                     return View("Login");
                 }
-                HttpContext.Session.SetString("Customer_Id", CustomerManagerment.Customer_Id);
+                HttpContext.Session.SetString("Customer_Id", customermanagerment.Customer_Id);
             }
             else
             {
@@ -63,7 +59,6 @@ namespace ZooProjF.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-
         [HttpPost]
         public async Task<IActionResult>Resgister(RegisterModel model)
         {
@@ -71,7 +66,7 @@ namespace ZooProjF.Controllers
             {
                 CustomerManagerment customer = new CustomerManagerment
                 {
-                    Customer_ID = model.Customer_ID,
+                    Customer_Id = model.Customer_Id,
                     First_Name = model.First_name,
                     Last_Name = model.Last_Name,
                     Phone_Number = model.Phone_Number,
@@ -92,19 +87,16 @@ namespace ZooProjF.Controllers
             }
             return RedirectToAction("Index", "Account");
         }
-
         public IActionResult Register()
         {
             ViewData["Message"] = "Registration Page";
             return View();
         }
-
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
             return View("Index");
         }
-
         public void ValidationMessage(string key,string alert,string value)
         {
             try

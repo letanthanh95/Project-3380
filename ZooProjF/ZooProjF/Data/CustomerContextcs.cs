@@ -3,10 +3,13 @@ using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.Linq;
+//using System.Data.Linq;
 using System.Threading.Tasks;
 using ZooProjF.Models;
-
+using System.Configuration;
+//using Thunderstruck;
+using Ado;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ZooProjF.Data
 {
@@ -23,49 +26,72 @@ namespace ZooProjF.Data
         {
             return new MySqlConnection(ConnectionString);
         }
-
+        [HttpPost]
         public void getDataSet()
         {
             // DataSet dataset = new DataSet();
         }
-
+        [HttpPost]
         public List<CustomerManagerment> GetAllCustomer()
         {
             List<CustomerManagerment> list = new List<CustomerManagerment>();
-            using (MySqlConnection conn=GetConnection())
+            using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SECLECT * from Customer", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM `Customer`", conn);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         list.Add(new CustomerManagerment()
                         {
-                            Customer_ID = Convert.ToInt32(reader["Customer_ID"]),
-                            First_Name = reader["First_Name"].ToString(),
-                            Last_Name = reader["Last_Name"].ToString(),
-                            Phone_Number = Convert.ToInt32(reader["Phone_Number"]),
-                            Email = reader["Email"].ToString(),
-                            Street_Name = reader["Street_Name"].ToString(),
-                            Zip_Code = Convert.ToInt32(reader["Zip_Code"]),
-                            City = reader["City"].ToString(),
-                            State = reader["State"].ToString()
+                           //Customer_ID = Convert.ToInt32(reader["Customer_ID"]),
+                           //Customer_ID = reader["Customer_ID"].ToString(),
+                            Customer_Id = Convert.ToString(reader[0]),
+                            First_Name=Convert.ToString(reader[1]),
+                            Last_Name = Convert.ToString(reader[2]),
+                            //Phone_Number = Convert.ToInt16(reader[3]),
+
+                            Email = Convert.ToString(reader[4]),
+
+                            Street_Name = Convert.ToString(reader[5]),
+                            //Zip_Code = Convert.ToInt64(reader[6]),
+
+
+                            City = Convert.ToString(reader[7]),
+
+                            State =Convert.ToString(reader[8]),
+
+
                         });
                     }
-                }  
+                }
             }
-                return list;
-            }
-        /*public int AddCustomerToDB(CustomerManagerment customer)
+            return list;
+        }
+        [HttpPost]
+        public int AddCustomerToDB(CustomerManagerment customer)
         {
             try
             {
-                using var context = new DataContext(ConnectionString)
+                using (var context = new DataContext(ConnectionString))
                 {
-
-                };
-        }*/
+                    var customerId = context.ExecuteGetIdentity("INSERT INTO Customer(Customer_ID,First_Name,Last_Name,Phone_Number,Email,Street_Name,Zip_Code,City,State,Password) VALUES(@0,@1,@2,@3,@4,@5,@6,@7,@8,@9)",
+                        customer.Customer_Id, customer.First_Name, customer.Last_Name, customer.Phone_Number, customer.Email, customer.Street_Name, customer.Zip_Code, customer.City, customer.State, customer.Password);
+                    return customerId;
+                }
+            }
+            catch (Exception e)
+            {
+                string msg = e.Message;
+            }
+            return -1;
+        }
     }
-}
+
+
+
+            }
     
+
+ 

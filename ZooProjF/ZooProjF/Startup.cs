@@ -1,14 +1,26 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions;
 using ZooProjF.Models;
+using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using ServiceStack;
+using Stripe;
 using ZooProjF.ViewModels;
+using ZooProjF.Views.Account;
+using ZooProjF.Data;
 
 namespace ZooProjF
 {
@@ -18,6 +30,18 @@ namespace ZooProjF
         {
             Configuration = configuration;
         }
+
+        public Startup(Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+        }
+
+
 
         public IConfiguration Configuration { get; }
 
@@ -40,6 +64,7 @@ namespace ZooProjF
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.Add(new ServiceDescriptor(typeof(CustomerContextcs), new CustomerContextcs(Configuration.GetConnectionString("DefaultConnection"))));
 
             services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

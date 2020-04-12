@@ -162,9 +162,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ado" Version="1.1.1" />
     <PackageReference Include="bootstrap" Version="4.4.1" />
     <PackageReference Include="EntityFramework" Version="6.4.0" />
+    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.3" />
+    <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0-preview.2.20167.3" />
+    <PackageReference Include="Microsoft.Build.Tasks.Core" Version="16.5.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0-preview.2.20159.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0-preview.2.20159.4">
       <PrivateAssets>all</PrivateAssets>
@@ -188,23 +192,30 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+    <PackageReference Include="MySQL.Data.Entities" Version="6.8.3" />
+    <PackageReference Include="MySql.Data.EntityFramework" Version="8.0.19" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.19" />
-    <PackageReference Include="MySqlConnector" Version="0.63.1" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore.Design" Version="8.0.19" />
+    <PackageReference Include="MySql.Web" Version="8.0.19" />
+    <PackageReference Include="MySqlConnector" Version="0.63.2" />
     <PackageReference Include="NuGet.DependencyResolver.Core" Version="5.6.0-preview.2.6489" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
     <PackageReference Include="ServiceStack.Interfaces" Version="5.8.0" />
+    <PackageReference Include="Simple.Data.Ado" Version="0.19.0" />
     <PackageReference Include="SQLDependency.DBConnection" Version="1.0.0" />
     <PackageReference Include="Stripe.net" Version="35.12.1" />
     <PackageReference Include="System.Console" Version="4.3.1" />
+    <PackageReference Include="Thunderstruck" Version="0.2.4" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\v2\" />
     <Folder Include="wwwroot\Content\images\NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="System.Data.Linq">
-      <HintPath>obj\System.Data.Linq.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\source\repos\Databases-Project\ZooProjF\ZooProjF\obj\System.Data.Linq.dll</HintPath>
     </Reference>
   </ItemGroup>
 

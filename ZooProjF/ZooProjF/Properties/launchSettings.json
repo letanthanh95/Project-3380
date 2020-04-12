@@ -1,19 +1,10 @@
-<<<<<<< HEAD
-{
-=======
 ﻿{
->>>>>>> c1138f4506431c0f11a73779fd9a8b2bf3da15c7
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-<<<<<<< HEAD
-      "applicationUrl": "http://localhost:8288/",
-      "sslPort": 44315
-=======
       "applicationUrl": "http://localhost:2019",
       "sslPort": 44328
->>>>>>> c1138f4506431c0f11a73779fd9a8b2bf3da15c7
     }
   },
   "profiles": {
@@ -27,15 +18,6 @@
     "ZooProjF": {
       "commandName": "Project",
       "launchBrowser": true,
-<<<<<<< HEAD
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:5001;http://localhost:5000"
-    }
-  }
-}
-=======
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -43,4 +25,3 @@
     }
   }
 }
->>>>>>> c1138f4506431c0f11a73779fd9a8b2bf3da15c7
