@@ -1,8 +1,23 @@
-﻿
+@*@page*@
+@model IEnumerable<ZooProjF.Models.ExhibitModel>
+
 @{
-    ViewData["Title"] = "Exhibit";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Exhibit";
 }
 
-<h1>Exhibit</h1>
+<!DOCTYPE html>
 
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div>
+    @foreach (var item in Model)
+    {
+        @Html.DisplayNameFor(model => model.Name)
+    }
+</div>
+</body>
+</html>

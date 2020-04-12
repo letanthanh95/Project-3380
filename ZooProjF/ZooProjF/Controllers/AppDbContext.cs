@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
-using MySqlX.XDevAPI.Relational;
+//using MySqlX.XDevAPI.Relational;
 using System.Data.Entity.Infrastructure;
 
 namespace ZooProjF.Models
