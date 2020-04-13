@@ -1,6 +1,5 @@
 namespace ZooProjF.Models
 {
-    //base it off CustomerManagerment
     public class ExhibitModel
     {
         public int Exhibit_ID { get; set; }

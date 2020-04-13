@@ -655,6 +655,20 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 0;
 }
 
+/* Exhibit Section */
+#about .exhibit-p{
+  max-width: 320px;
+}
+.exhibit-img{
+  text-align: center;
+}
+.exhibit-col-md-4{
+  margin: auto;
+}
+#exhibit-body{
+  background-color: #333;
+}
+
 /* About Us Section
 --------------------------------*/
 #about {

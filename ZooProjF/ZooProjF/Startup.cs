@@ -65,6 +65,7 @@ namespace ZooProjF
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.Add(new ServiceDescriptor(typeof(CustomerContext), new CustomerContext(Configuration.GetConnectionString("DefaultConnection"))));
+            services.Add(new ServiceDescriptor(typeof(ExhibitContext), new ExhibitContext(Configuration.GetConnectionString("DefaultConnection"))));
 
             services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

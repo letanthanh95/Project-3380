@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 namespace ZooProjF.Models
 {
-    //base it off of CustomerContextcs.cs
     public class ExhibitContext
     {
         public string ConnectionString { get; set; }
@@ -38,10 +37,10 @@ namespace ZooProjF.Models
                             //Exhibit_ID = Convert.ToString(reader[0]),
                             //Department_ID = Convert.ToString(reader[1]),
                             //Animal_ID = Convert.ToString(reader[2]),
-                            Name = Convert.ToString(reader[3]),
-                            Exhibit_Habitat = Convert.ToString(reader[4]),
-                            Description = Convert.ToString(reader[5]),
-                            Image_URL = Convert.ToString(reader[6])
+                            Name = Convert.ToString(reader[0]),
+                            //Exhibit_Habitat = Convert.ToString(reader[4]),
+                            Description = Convert.ToString(reader[1]),
+                            Image_URL = Convert.ToString(reader[2])
                         });
                     }
                 }

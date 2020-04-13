@@ -29,7 +29,8 @@ h1 {
 }
 
 .row {
-    overflow: hidden
+    overflow: hidden;
+    margin:auto; /*added margin auto for exhibit to be centered */
 }
 
 .card {
