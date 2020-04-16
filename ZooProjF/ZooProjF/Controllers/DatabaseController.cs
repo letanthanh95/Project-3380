@@ -1,31 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using ZooProjF.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using ZooProjF.ViewModels;
-using System.Data.Entity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿
 using Microsoft.AspNetCore.Http;
-//using Stripe;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 using ZooProjF.Data;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using ZooProjF.Models;
 
 namespace ZooProjF.Controllers
 {
-    public class DatabaseController:Controller
+    public class DatabaseController : Controller
     {
         private CustomerContext context;
-        void setDbContext()
+
+        public void SetDbContext()
         {
-            if (context==null)
+            if (context == null)
             {
                 context = HttpContext.RequestServices.GetService(typeof(CustomerContext)) as CustomerContext;
             }
@@ -33,22 +22,23 @@ namespace ZooProjF.Controllers
 
         public ActionResult Index()
         {
-            setDbContext();
+            SetDbContext();
             List<CustomerManagement> customer = new List<CustomerManagement>();
             customer = context.GetAllCustomer();
-            List<CustomerManagement> fullcustomer = (from Customer in customer select new CustomerManagement
-            {
-                Customer_Id= Customer.Customer_Id,
-                First_Name = Customer.First_Name,
-                Last_Name = Customer.Last_Name,
-                Email = Customer.Email,
-                Phone_Number = Customer.Phone_Number,
-                Street_Name = Customer.Street_Name,
-                Zip_Code = Customer.Zip_Code,
-                City = Customer.City,
-                State = Customer.State
+            List<CustomerManagement> fullcustomer = (from Customer in customer
+                                                     select new CustomerManagement
+                                                     {
+                                                         CustomerMangagementId = Customer.CustomerMangagementId,
+                                                         First_Name = Customer.First_Name,
+                                                         Last_Name = Customer.Last_Name,
+                                                         Email = Customer.Email,
+                                                         Phone_Number = Customer.Phone_Number,
+                                                         Street_Name = Customer.Street_Name,
+                                                         Zip_Code = Customer.Zip_Code,
+                                                         City = Customer.City,
+                                                         State = Customer.State
 
-            }).ToList<CustomerManagement>();
+                                                     }).ToList<CustomerManagement>();
             return View(fullcustomer);
         }
 
@@ -65,10 +55,10 @@ namespace ZooProjF.Controllers
             {
                 // TODO: Add insert logic here
 
-                setDbContext();
+                SetDbContext();
 
                 int status = context.AddCustomerToDB(customer);
-                
+
                 return RedirectToAction("Index");
             }
             catch

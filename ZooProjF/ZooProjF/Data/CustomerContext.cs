@@ -39,6 +39,7 @@ namespace ZooProjF.Data
             List<CustomerManagement> list = new List<CustomerManagement>();
             using (MySqlConnection conn = GetConnection())
             {
+
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand("SELECT * FROM `Customer`", conn);
                 using (var reader = cmd.ExecuteReader())
@@ -47,25 +48,22 @@ namespace ZooProjF.Data
                     {
                         list.Add(new CustomerManagement()
                         {
-                           //Customer_ID = Convert.ToInt32(reader["Customer_ID"]),
-                           //Customer_ID = reader["Customer_ID"].ToString(),
-                            Customer_Id = Convert.ToString(reader[0]),
-                            First_Name=Convert.ToString(reader[1]),
-                            Last_Name = Convert.ToString(reader[2]),
-                            //Phone_Number = Convert.ToInt16(reader[3]),
-
-                            Email = Convert.ToString(reader[4]),
-
-                            Street_Name = Convert.ToString(reader[5]),
-                            //Zip_Code = Convert.ToInt64(reader[6]),
-                            City = Convert.ToString(reader[7]),
-                            State =Convert.ToString(reader[8]),
+                            //Customer_Id = Convert.ToString(reader[0]),
+                            //Phone_Number = Convert.ToInt16(reader[]),
+                            //Zip_Code = Convert.ToInt64(reader[]),
+                            First_Name = Convert.ToString(reader[0]),
+                            Last_Name = Convert.ToString(reader[1]),
+                            Email = Convert.ToString(reader[2]),
+                            Street_Name = Convert.ToString(reader[3]),
+                            City = Convert.ToString(reader[4]),
+                            State = Convert.ToString(reader[5]),
                         });
                     }
                 }
             }
             return list;
         }
+
         [HttpPost]
         public int AddCustomerToDB(CustomerManagement customer)
         {
@@ -74,13 +72,14 @@ namespace ZooProjF.Data
                 using (var context = new DataContext(ConnectionString))
                 {
                     var customerId = context.ExecuteGetIdentity("INSERT INTO Customer(Customer_ID,First_Name,Last_Name,Phone_Number,Email,Street_Name,Zip_Code,City,State,Password) VALUES(@0,@1,@2,@3,@4,@5,@6,@7,@8,@9)",
-                        customer.Customer_Id, customer.First_Name, customer.Last_Name, customer.Phone_Number, customer.Email, customer.Street_Name, customer.Zip_Code, customer.City, customer.State, customer.Password);
+                        customer.CustomerMangagementId, customer.First_Name, customer.Last_Name, customer.Phone_Number, customer.Email, customer.Street_Name, customer.Zip_Code, customer.City, customer.State, customer.Password);
                     return customerId;
                 }
             }
             catch (Exception e)
             {
                 string msg = e.Message;
+
             }
             return -1;
         }

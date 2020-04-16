@@ -1,57 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-//using Microsoft.AspNet.Identity;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using ZooProjF.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using ZooProjF.ViewModels;
-using System.Data.Entity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Http;
+using System.Data.Entity;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using ZooProjF.Models;
+using ZooProjF.ViewModels;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ZooProjF.Controllers
 {
-   
     public class AccountController : Controller
     {
-        private readonly AppDbContext _dbContext;
+        private AppDbContext _dbContext;
         private AppDbContext context;
+
         public AccountController(AppDbContext context)
         {
             _dbContext = context;
         }
-        void setDbContext()
+
+        public void setDbContext()
         {
-            if (context==null)
+            if (context == null)
             {
                 context = HttpContext.RequestServices.GetService(typeof(AppDbContext)) as AppDbContext;
             }
         }
+
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Login(CustomerManagement model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var customermanagerment = await _dbContext.CustomerManagerment.FirstOrDefaultAsync
-                    (m => m.Email==model.Email &&m.Password==model.Password);
-                if(customermanagerment==null)
+                var customermanagement = await _dbContext.CustomerManagement.FirstOrDefaultAsync
+                    (m => m.Email == model.Email && m.Password == model.Password);
+
+                if (customermanagement == null)
                 {
                     ModelState.AddModelError("Password", "Wrong Password.");
                     return View("Login");
                 }
-                HttpContext.Session.SetString("First_Name", customermanagerment.First_Name);
+                HttpContext.Session.SetString("First_Name", customermanagement.First_Name);
             }
             else
             {
@@ -59,14 +55,15 @@ namespace ZooProjF.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
         [HttpPost]
-        public async Task<IActionResult>Resgister(RegisterModel model)
+        public async Task<IActionResult> Resgister(RegisterModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 CustomerManagement customer = new CustomerManagement
                 {
-                    Customer_Id = model.Customer_Id,
+                    CustomerMangagementId = model.Customer_Id,
                     First_Name = model.First_name,
                     Last_Name = model.Last_Name,
                     Phone_Number = model.Phone_Number,
@@ -77,9 +74,9 @@ namespace ZooProjF.Controllers
                     State = model.State,
                     Password = model.Password,
                 };
+
                 _dbContext.Add(customer);
                 await _dbContext.SaveChangesAsync();
-
             }
             else
             {
@@ -87,17 +84,20 @@ namespace ZooProjF.Controllers
             }
             return RedirectToAction("Index", "Account");
         }
+
         public IActionResult Register()
         {
             ViewData["Message"] = "Registration Page";
             return View();
         }
+
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
             return View("Index");
         }
-        public void ValidationMessage(string key,string alert,string value)
+
+        public void ValidationMessage(string key, string alert, string value)
         {
             try
             {
@@ -112,6 +112,4 @@ namespace ZooProjF.Controllers
             }
         }
     }
-    
-    
 }

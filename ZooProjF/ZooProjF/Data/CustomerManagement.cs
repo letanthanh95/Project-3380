@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace ZooProjF.Models
 {
     public class CustomerManagement
     {
-        public string Customer_Id { get; internal set; }
+        public int CustomerMangagementId { get; set; }
         public string First_Name { get; internal set; }
         public string Last_Name { get; internal set; }
         public string Email { get; internal set; }

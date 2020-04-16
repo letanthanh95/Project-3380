@@ -18,10 +18,9 @@ namespace ZooProjF.ViewModels
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name ="Confrim password")]
-        [Compare("Password",ErrorMessage ="Password and confrimation password do not match")]
+        [Display(Name ="Confirm password")]
+        [Compare("Password",ErrorMessage ="Password and confirmation password do not match")]
         public string ConfirmPassword { get; set; }
-
         public string First_name { get; internal set; }
         public string Last_Name { get; internal set; }
         public int Phone_Number { get; internal set; }
@@ -29,6 +28,6 @@ namespace ZooProjF.ViewModels
         public int Zip_Code { get; internal set; }
         public string City { get; internal set; }
         public string State { get; internal set; }
-        public string Customer_Id { get; internal set; }
+        public int Customer_Id { get; internal set; }
     }
 }

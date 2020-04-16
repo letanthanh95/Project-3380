@@ -32,6 +32,5 @@ namespace ZooProjF
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-        
     }
 }
