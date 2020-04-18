@@ -61,23 +61,20 @@
 
 
     <!-- Template Main CSS File -->
-
     <link rel="stylesheet" href="~/Content/style.css" type="text/css">
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css">
 
     <link rel="stylesheet" href="~/Content/style_schedule.css" type="text/css">
     <link rel="stylesheet" href="~/Content/ticket/ticket.css" type="text/css">
 </head>
+
 <body>
-    <!-- ======= Header ======= -->
+
     <header id="header">
         <div class="container-fluid">
-
             <div id="logo" class="pull-left">
                 <h1>
-
-                    @Html.ActionLink("zoo", "Index", "Home", new { @style = "text-decoration:none;font-family: 'Dancing Script', cursive;" })
-
+                    @Html.ActionLink("zoo", "Index", "Home")
                 </h1>
 
                 <!-- Uncomment below if you prefer to use an image logo
@@ -87,16 +84,16 @@
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
 
-                    <li class="menu-active"><a asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li class="menu-active"><a asp-controller="Home" asp-action="TicketIndex">Tickets</a></li>
+                    <li class="menu-active">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Tickets", "TicketIndex", "Home")</li>
+                    <li>@Html.ActionLink("Shop", "Index", "GiftShops")</li>
+                    <li>@Html.ActionLink("Exhibits", "Index", "Exhibits")</li>
 
-
-                    <li>@Html.ActionLink("Shop", "ShopIndex", "Home", new { @style = "text-decoration:none;" })</li>
                     <li class="menu-has-children">
                         <a href="" style="text-decoration:none">Events</a>
                         <ul>
-                            <li>@Html.ActionLink("Private Events", "Index", "Home", new { @style = "text-decoration:none;" })</li>
-                            <li>@Html.ActionLink("Public Events", "Index", "Home", new { @style = "text-decoration:none;" })</li>
+                            <li>@Html.ActionLink("Private Events", "Index", "PrivateEvents")</li>
+                            <li>@Html.ActionLink("Events", "Index", "Events")</li>
 
                         </ul>
                     </li>
@@ -105,7 +102,8 @@
                 </ul>
             </nav><!-- #nav-menu-container -->
         </div>
-    </header><!-- End Header -->
+    </header>
+
     @RenderBody()
     <!-- ======= Footer ======= -->
     <footer id="footer">
@@ -146,7 +144,6 @@
                             <a href="@Url.Action("Index", "Home", new { @style = "text-decoration:none;" })" class="google-plus"><i class="fa fa-google-plus"></i></a>
                             <a href="@Url.Action("Index", "Home", new { @style = "text-decoration:none;" })" class="linkedin"><i class="fa fa-linkedin"></i></a>
                         </div>
-
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-newsletter">
@@ -162,7 +159,6 @@
         </div>
 
         <div class="container">
-
             <div class="copyright">
                 &copy; Copyright <strong>ZOO</strong>. All Rights Reserved
             </div>
@@ -175,8 +171,8 @@
                 -->
                 Designed by Team 10
             </div>
-
         </div>
+
     </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
