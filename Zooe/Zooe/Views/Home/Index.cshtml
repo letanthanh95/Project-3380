@@ -12,12 +12,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>@ViewBag.title</title>
+
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
     <link href="~/Content/img/icon.png" rel="icon">
     <link href="Content/font_icon/css/all.css" rel="stylesheet">
-
-
     <link href="~/Content/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -64,13 +63,14 @@
 
                     <li class="menu-active">@Html.ActionLink("Home", "Index", "Home", new { @style = "text-decoration:none;" })</li>
                     <li>@Html.ActionLink("Tickets", "TicketIndex", "Home", new { @style = "text-decoration:none;" })</li>
+                    <li>@Html.ActionLink("Shop", "Index", "GiftShops", new { @style = "text-decoration:none;" })</li>
+                    <li>@Html.ActionLink("Exhibits", "Index", "Exhibits", new { @style = "text-decoration:none;" })</li>
 
-                    <li>@Html.ActionLink("Shop", "ShopIndex", "Home", new { @style = "text-decoration:none;" })</li>
                     <li class="menu-has-children">
                         <a href="" style="text-decoration:none">Events</a>
                         <ul>
-                            <li>@Html.ActionLink("Private Events", "Index", "Home", new { @style = "text-decoration:none;" })</li>
-                            <li>@Html.ActionLink("Public Events", "Index", "Home", new { @style = "text-decoration:none;" })</li>
+                            <li>@Html.ActionLink("Private Events", "Index", "PrivateEvents", new { @style = "text-decoration:none;" })</li>
+                            <li>@Html.ActionLink("Events", "Index", "Events", new { @style = "text-decoration:none;" })</li>
 
                         </ul>
                     </li>
