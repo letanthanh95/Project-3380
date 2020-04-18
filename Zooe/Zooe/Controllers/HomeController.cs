@@ -23,6 +23,12 @@ namespace Zooe.Controllers
             return View();
         }
 
+        //Do not move, we need to make a database entity, model, and controller for ticket.
+        public IActionResult TicketIndex()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
