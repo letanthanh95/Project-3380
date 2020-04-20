@@ -17,7 +17,10 @@ namespace Zooe.Controllers
         {
             _logger = logger;
         }
-
+        public IActionResult Sourvenirs()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             return View();
@@ -33,7 +36,10 @@ namespace Zooe.Controllers
         {
             return View();
         }
-
+        public IActionResult Admin()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

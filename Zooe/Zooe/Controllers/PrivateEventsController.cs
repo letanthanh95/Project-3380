@@ -24,7 +24,11 @@ namespace Zooe.Controllers
             var team10Context = _context.PrivateEvent.Include(p => p.Department);
             return View(await team10Context.ToListAsync());
         }
-
+        public async Task<IActionResult> PrivateEvent()
+        {
+            var team10Context = _context.PrivateEvent.Include(p => p.Department);
+            return View(await team10Context.ToListAsync());
+        }
         // GET: PrivateEvents/Details/5
         public async Task<IActionResult> Details(int? id)
         {
