@@ -101,8 +101,18 @@ namespace Zooe.Controllers
             {
                 try
                 {
-                    _context.Update(staff);
-                    await _context.SaveChangesAsync();
+                    Staff _staff = _context.Staff.Where(s => s.StaffId == staff.StaffId).First();
+                    _staff.DepartmentId = staff.DepartmentId;
+                    _staff.FirstName = staff.FirstName;
+                    _staff.LastName = staff.LastName;
+                    _staff.JobTitle = staff.JobTitle;
+                    _staff.EmailAddress = staff.EmailAddress;
+                    _staff.HomeAddress = staff.HomeAddress;
+                    _staff.Salary = staff.Salary;
+                    _context.Update(_staff);
+                    _context.SaveChanges();
+//                    _context.Update(staff);
+//                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
