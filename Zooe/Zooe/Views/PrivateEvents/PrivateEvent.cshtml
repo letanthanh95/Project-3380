@@ -1,0 +1,169 @@
+﻿
+@{
+    ViewData["Title"] = "PrivateEvent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Title</title>
+</head>
+<style>
+    #header {
+        background-color: black;
+    }
+</style>
+<body id="exhibit-body">
+
+    <main id="main">
+        <section id="about">
+            <div class="container">
+
+                <header class="section-header">
+                    <h3>Host An Event</h3>
+                </header>
+
+                <div class="row about-cols">
+
+                    <!--start loop-->
+                    <!-- wwwroot => style.css & wwwroot=> ticket=>ticket.css .row-->
+
+                    <div class="exhibit-col-md-4 cold-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="exhibit-col about-col" style="width:320px;height:536px">
+                            <div class="exhibit-img">
+                                <img style="width:320px;height:200px" src="~/Content/img/Wedding.jpg" class="img-fluid thumbnail zoom">
+                                <div class="overlay">Up to 60 Guests</div>
+                            </div>
+                            <a href="#" style="text-decoration:none"><h2 class="title">Wedding</h2></a>
+                            <p class="exhibit-p" style="font-family: 'Dancing Script', cursive;">
+                                Looking for a stunning backdrop for your special day? From intimate to extravagant,
+                                the Houston Zoo offers iconic venues with elegant atmospheres and natural ambiance for an unforgettable wedding reception
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="exhibit-col-md-4 cold-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="exhibit-col about-col" style="width:320px;height:536px">
+                            <div class="exhibit-img">
+                                <img style="width:320px;height:200px" src="~/Content/img/birthday.jpg" class="img-fluid thumbnail zoom">
+                                <div class="overlay">Up to 60 Guests</div>
+                            </div>
+                            <a href="#" style="text-decoration:none"><h2 class="title">Birthday</h2></a>
+                            <p class="exhibit-p" style="font-family: 'Dancing Script', cursive;">
+                                Treat your guests to a birthday celebration that is one of a kind.
+                                Your guests will enjoy a private event venue and experience the brilliant displays of colorful lights and festive holiday music as they stroll throughout the Zoo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="exhibit-col-md-4 cold-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="exhibit-col about-col" style="width:320px;height:536px">
+                            <div class="exhibit-img">
+                                <img style="width:320px;height:200px" src="~/Content/img/picnic.jpg" class="img-fluid thumbnail zoom">
+                                <div class="overlay">Up to 60 Guests</div>
+                            </div>
+                            <a href="#" style="text-decoration:none"><h2 class="title">Picnic</h2></a>
+                            <p class="exhibit-p" style="font-family: 'Dancing Script', cursive;">
+                                Every day the Houston Zoo manages a herd of 6000 exotic animal species—so just imagine what we can do for your 100 to 2000 employees! Our event specialists will help make your next company picnic a smart,
+                                fun and inspiring experience.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="exhibit-col-md-4 cold-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="exhibit-col about-col" style="width:320px;height:536px">
+                            <div class="exhibit-img">
+                                <img style="width:320px;height:200px" src="~/Content/img/event.jpg" class="img-fluid thumbnail zoom">
+                                <div class="overlay">Up to 60 Guests</div>
+                            </div>
+                            <a href="#" style="text-decoration:none"><h2 class="title">Meeting</h2></a>
+                            <p class="exhibit-p" style="font-family: 'Dancing Script', cursive;">
+                                Looking to get out of the office or company conference room? Wanting to gather your pack for a corporate happy hour, team-building activity, or employee appreciation dinner?
+                                The Houston Zoo offers unique gathering spaces where groups, large and small, can have interactive and memorable events with colleagues.
+                            </p>
+                        </div>
+                    </div>
+                    @*
+                        <div class="col-md-4 wow fadeInUp">
+                            <div class="about-col">
+                                <div class="img">
+                                    <img src="Content/img/welcome.png" alt="" class="img-fluid">
+                                </div>
+                                <h2 class="title">@Html.ActionLink("Exhibits", "Index", "Home", new {@style = "text-decoration:none;"})</h2>
+                                <p>
+                                    With over 40 filled exhibits, theres something for everyone here!
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="about-col">
+                                <div class="img">
+                                    <img src="Content/img/store.png" style="height:218px;width:350px" alt="" class="img-fluid">
+                                </div>
+                                <h2 class="title">@Html.ActionLink("Shop", "ShopIndex", "Shop", new {@style = "text-decoration:none;"})</h2>
+                                <p>
+                                    Take a memory home in the form of commemorative photos or plushes.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="about-col">
+                                <div class="img">
+                                    <img src="Content/img/events.jpg" style="height:218px;width:350px" alt=" " class=" img-fluid">
+                                </div>
+                                <h2 class="title">@Html.ActionLink("Events", "Index", "Home", new {@style = "text-decoration:none;"})</h2>
+                                <p>
+                                    Special tickets for special events!
+                                </p>
+                            </div>
+                        </div>
+                    *@
+
+                </div>
+
+            </div>
+        </section><!-- End About Us Section -->
+    </main>
+
+    @*
+        <div>
+            <table class="table">
+                <thead>
+                <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image_URL)
+                </th>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Image_URL)
+                        </td>
+                    </tr>
+                }
+                </thead>
+                <tbody>
+            </table>
+
+        </div>*@
+</body>
+</html>
+
+
+

@@ -24,6 +24,11 @@ namespace Zooe.Controllers
             var team10Context = _context.GiftShop.Include(g => g.Department);
             return View(await team10Context.ToListAsync());
         }
+        public async Task<IActionResult> Shop()
+        {
+            var team10Context = _context.GiftShop.Include(g => g.Department);
+            return View(await team10Context.ToListAsync());
+        }
 
         // GET: GiftShops/Details/5
         public async Task<IActionResult> Details(int? id)
