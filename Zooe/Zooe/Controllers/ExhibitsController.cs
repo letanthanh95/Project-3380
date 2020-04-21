@@ -26,12 +26,14 @@ namespace Zooe.Controllers
             var team10Context = _context.Exhibit.Include(e => e.Department);
             return View(await team10Context.ToListAsync());
         }
+
         public async Task<IActionResult> Exhibits()
         {
             var team10Context = _context.Exhibit.Include(e => e.Department);
             return View(await team10Context.ToListAsync());
         }
         // GET: Exhibits/Details/5
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
