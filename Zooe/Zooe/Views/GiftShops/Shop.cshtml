@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<Zooe.Team10.GiftShop>
-
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Shop";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,23 +20,23 @@
                 <div class="carousel-inner" role="listbox">
 
                     <div class="carousel-item active">
-                        <div class="carousel-background"><img src="Content/img/intro-carousel/Panda.jpg" alt=""></div>
+                        <div class="carousel-background"><img src="~/Content/img/cafeshop.jpg" alt=""></div>
                         <div class="carousel-container">
                             <div class="carousel-caption">
                                 <h2>Zoo Shop</h2>
                                 <p>Take a look at the various Zoo products we have for sale!</p>
-                                <a class="btn-get-started scrollto" href="@Url.Action("Index", "Home")">Explore</a>
+                                <a class="btn-get-started scrollto" href="@Url.Action("Shop", "GiftShops")">Explore</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="carousel-item">
-                        <div class="carousel-background"><img src="Content/img/intro-carousel/fox.jpg" alt=""></div>
+                        <div class="carousel-background"><img src="~/Content/img/food.jpg" alt=""></div>
                         <div class="carousel-container">
                             <div class="carousel-caption">
                                 <h2>Recreation Plushies</h2>
                                 <p>Get a little Riot to take home!</p>
-                                <a class="btn-get-started scrollto" href="@Url.Action("Index", "Home")">Explore</a>
+                                <a class="btn-get-started scrollto" href="@Url.Action("Shop", "Items")">Explore</a>
                             </div>
                         </div>
                     </div>
@@ -67,19 +69,19 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto" style="text-align:right">
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Home" asp-action="Cart"><i class="fas fa-shopping-cart">Cart</i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Home" asp-action="Checkout">Check Out</a>
+                                </li>
+                            }
 
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Home" asp-action="Cart"><i class="fas fa-shopping-cart">Cart</i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Home" asp-action="Checkout">Check Out</a>
-                            </li>
 
                         </ul>
-                        <form class="form-inline my-2 my-lg-0" method="POST">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-                        </form>
+                        
 
                     </div>
                 </nav>

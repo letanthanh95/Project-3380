@@ -3,10 +3,14 @@
     ViewData["Title"] = "Checkout";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    
+    <style>
+        #header {
+            background-color: black;
+        }
+    </style>
         <div class="slider-area ">
             <!-- Mobile Menu -->
-            <div class="single-slider slider-height2 d-flex align-items-center" data-background="@Url.Content("~/Content/assets_store/img/hero/category.jpg")">
+            
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -22,39 +26,7 @@
         <!--================Checkout Area =================-->
         <section class="checkout_area section_padding">
             <div class="container">
-                <div class="returning_customer">
-                    <div class="check_title">
-                        <h2>
-                            Returning Customer?
-                            <a href="#">Click here to login</a>
-                        </h2>
-                    </div>
-                    <p>
-                        If you have shopped with us before, please enter your details in the
-                        boxes below. If you are a new customer, please proceed to the
-                        Billing & Shipping section.
-                    </p>
-                    <form class="row contact_form" action="#" method="post" novalidate="novalidate">
-                        <div class="col-md-6 form-group p_star">
-                            <input type="text" class="form-control" id="name" name="name" value=" " />
-                            <span class="placeholder" data-placeholder="Username or Email"></span>
-                        </div>
-                        <div class="col-md-6 form-group p_star">
-                            <input type="password" class="form-control" id="password" name="password" value="" />
-                            <span class="placeholder" data-placeholder="Password"></span>
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <button type="submit" value="submit" class="btn_3">
-                                log in
-                            </button>
-                            <div class="creat_account">
-                                <input type="checkbox" id="f-option" name="selector" />
-                                <label for="f-option">Remember me</label>
-                            </div>
-                            <a class="lost_pass" href="#">Lost your password?</a>
-                        </div>
-                    </form>
-                </div>
+                
 
                 <div class="billing_details">
                     <div class="row">
@@ -109,12 +81,7 @@
                                 <div class="col-md-12 form-group">
                                     <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP" />
                                 </div>
-                                <div class="col-md-12 form-group">
-                                    <div class="creat_account">
-                                        <input type="checkbox" id="f-option2" name="selector" />
-                                        <label for="f-option2">Create an account?</label>
-                                    </div>
-                                </div>
+                                
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account">
                                         <h3>Shipping Details</h3>

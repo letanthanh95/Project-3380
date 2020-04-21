@@ -38,7 +38,14 @@ namespace Zooe.Controllers
         {
             return View();
         }
-
+        public IActionResult Cart()
+        {
+            return View();
+        }
+        public IActionResult Checkout()
+        {
+            return View();
+        }
         public IActionResult Admin()
         {
             return View();
