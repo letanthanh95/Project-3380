@@ -36,6 +36,9 @@ namespace Zooe
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<Team10Context>();
 
+            services.Add(new ServiceDescriptor(typeof(ReportContext), new ReportContext(Configuration.GetConnectionString("DefaultConnection"))));
+
+
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddMvc();

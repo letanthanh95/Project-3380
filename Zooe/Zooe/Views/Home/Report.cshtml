@@ -1,0 +1,80 @@
+@model IEnumerable<Zooe.Team10.ItemPurchase>
+@{
+    ViewData["Title"] = "Report";
+    Layout = "_Layout";
+}
+
+    <html>
+    <body>
+        <table class="container">
+          <tr></tr>  
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @if (item == Model.First())
+                        {
+                            <p>Average Cost of Purchases: @Html.DisplayTextFor(modelitem => item.TransactionId)</p>
+                        }
+                        else
+                        {@Html.DisplayTextFor(modelitem => item.TransactionId)}
+                    </td>
+                    <td>
+                        @if (item == Model.First())
+                        {
+                        <p>Total Number of Transactions: @Html.DisplayTextFor(modelitem => item.ItemId) </p>}
+                        else
+                        {@Html.DisplayTextFor(modelitem => item.ItemId)}
+                    </td>
+                    <td>
+                        @if (item == Model.First())
+                        {
+                            <p> Total Number of Stock Sold: @Html.DisplayTextFor(modelitem => item.CustomerId) </p> }
+                        else
+                        {@Html.DisplayTextFor(modelitem => item.ItemId)}
+                    </td>
+                    <td>
+                        @if ((Html.DisplayTextFor(modelitem => item.Quantity)).ToString() != "0")
+                        {
+                            @Html.DisplayTextFor(modelitem => item.TotalCost)}
+                        else { }
+                    </td>
+                    <td>
+                        @if ((Html.DisplayTextFor(modelitem => item.Quantity)).ToString() != "0")
+                        {
+                            @Html.DisplayTextFor(modelitem => item.PurchaseDate)}
+                        else { }
+                    </td>
+                    <td>
+                        @if ((Html.DisplayTextFor(modelitem => item.Quantity)).ToString() != "0")
+                        {
+                            @Html.DisplayTextFor(modelitem => item.Quantity)}
+                        else { }
+                    </td>
+                </tr>
+                @if (item == Model.First()) {
+        <tr>
+            <td>
+                TransactionID
+            </td>
+            <td>
+                ItemID
+            </td>
+            <td>
+                CustomerID
+            </td>
+            <td>
+                Total Cost
+            </td>
+            <td>
+                Purchase Date
+            </td>
+            <td>
+                Quantity
+            </td>
+        </tr>}
+            }
+
+        </table>
+    </body>
+    </html>
