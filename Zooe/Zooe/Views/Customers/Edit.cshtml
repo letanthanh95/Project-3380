@@ -1,7 +1,7 @@
 ﻿@model Zooe.Team10.Customer
 
 @{
-    Layout = null;
+    //Layout = null;
 }
 
 <!DOCTYPE html>
@@ -60,11 +60,11 @@
                 <input asp-for="State" class="form-control" />
                 <span asp-validation-for="State" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
+            @* <div class="form-group"> *@
+                @* <label asp-for="Password" class="control-label"></label> *@
+                <input type="hidden" asp-for="Password" class="form-control" />
+                @* <span asp-validation-for="Password" class="text-danger"></span> *@
+            @* </div> *@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
