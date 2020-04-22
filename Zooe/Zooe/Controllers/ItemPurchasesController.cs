@@ -105,13 +105,13 @@ namespace Zooe.Controllers
             {
                 try
                 {
-                    ItemPurchase _itemPurchase = _context.ItemPurchase.Where(s => s.TransactionId == @itemPurchase.TransactionId).First();
-                    _itemPurchase.ItemId = @itemPurchase.ItemId;
-                    _itemPurchase.CustomerId = @itemPurchase.CustomerId;
-                    _itemPurchase.TotalCost = @itemPurchase.TotalCost;
-                    _itemPurchase.PurchaseDate = @itemPurchase.PurchaseDate;
-                    _itemPurchase.Quantity = @itemPurchase.Quantity;
-                    _context.Update(itemPurchase);
+                    ItemPurchase _itemPurchase = _context.ItemPurchase.Where(s => s.TransactionId == itemPurchase.TransactionId).First();
+                    _itemPurchase.ItemId = itemPurchase.ItemId;
+                    _itemPurchase.CustomerId = itemPurchase.CustomerId;
+                    _itemPurchase.TotalCost = itemPurchase.TotalCost;
+                    _itemPurchase.PurchaseDate = itemPurchase.PurchaseDate;
+                    _itemPurchase.Quantity = itemPurchase.Quantity;
+                    _context.Update(_itemPurchase);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

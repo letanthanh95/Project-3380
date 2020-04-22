@@ -97,8 +97,8 @@ namespace Zooe.Controllers
                 try
                 {
                     Department _department = _context.Department.Where(s => s.DepartmentId == department.DepartmentId).First();
-                    _department.DepartmentName = @department.DepartmentName;
-                    _context.Update(department);
+                    _department.DepartmentName = department.DepartmentName;
+                    _context.Update(_department);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

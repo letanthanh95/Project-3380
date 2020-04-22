@@ -106,13 +106,13 @@ namespace Zooe.Controllers
             {
                 try
                 {
-                    GiftShop _giftShop = _context.GiftShop.Where(s => s.ShopId == @giftShop.ShopId).First();
-                    _giftShop.DepartmentId = @giftShop.DepartmentId;
-                    _giftShop.ShopName = @giftShop.ShopName;
-                    _giftShop.Description = @giftShop.Description;
-                    _giftShop.ImageUrl = @giftShop.ImageUrl;
-                    _giftShop.Location = @giftShop.Location;
-                    _context.Update(giftShop);
+                    GiftShop _giftShop = _context.GiftShop.Where(s => s.ShopId == giftShop.ShopId).First();
+                    _giftShop.DepartmentId = giftShop.DepartmentId;
+                    _giftShop.ShopName = giftShop.ShopName;
+                    _giftShop.Description = giftShop.Description;
+                    _giftShop.ImageUrl = giftShop.ImageUrl;
+                    _giftShop.Location = giftShop.Location;
+                    _context.Update(_giftShop);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

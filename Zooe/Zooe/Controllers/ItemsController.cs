@@ -106,12 +106,12 @@ namespace Zooe.Controllers
             {
                 try
                 {
-                    Items _items = _context.Items.Where(s => s.ItemId == @items.ItemId).First();
-                    _items.Title = @items.Title;
-                    _items.ImageUrl = @items.ImageUrl;
-                    _items.Price = @items.Price;
-                    _items.StockCount = @items.StockCount;
-                    _context.Update(items);
+                    Items _items = _context.Items.Where(s => s.ItemId == items.ItemId).First();
+                    _items.Title = items.Title;
+                    _items.ImageUrl = items.ImageUrl;
+                    _items.Price = items.Price;
+                    _items.StockCount = items.StockCount;
+                    _context.Update(_items);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
