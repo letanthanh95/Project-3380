@@ -110,7 +110,7 @@ namespace Zooe.Controllers
                     _staff.HomeAddress = staff.HomeAddress;
                     _staff.Salary = staff.Salary;
                     _context.Update(_staff);
-                    _context.SaveChanges();
+                    await _context.SaveChangesAsync();
 //                    _context.Update(staff);
 //                    await _context.SaveChangesAsync();
                 }

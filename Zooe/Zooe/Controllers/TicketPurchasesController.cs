@@ -101,7 +101,16 @@ namespace Zooe.Controllers
             {
                 try
                 {
-                    _context.Update(ticketPurchase);
+                    TicketPurchase _ticketPurchase = _context.TicketPurchase.Where(s => s.TransactionId == ticketPurchase.TransactionId).First();
+                    _ticketPurchase.TransactionId = ticketPurchase.TransactionId;
+                    _ticketPurchase.CustomerId = ticketPurchase.CustomerId;
+                    _ticketPurchase.TicketId = ticketPurchase.TicketId;
+                    _ticketPurchase.Price = ticketPurchase.Price;
+                    _ticketPurchase.ExpirationDate = ticketPurchase.ExpirationDate;
+                    _ticketPurchase.PurchaseDate = ticketPurchase.PurchaseDate;
+                    _ticketPurchase.IsValid = ticketPurchase.IsValid;
+
+                    _context.Update(_ticketPurchase);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
