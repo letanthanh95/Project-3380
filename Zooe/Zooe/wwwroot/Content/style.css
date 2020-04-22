@@ -125,11 +125,6 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 997;
 }
 
-.just-menu{
-  background-color: #1eb14f;
-
-}
-
 #header.header-scrolled {
   background: rgba(0, 0, 0, 0.9);
   padding: 20px 0;
@@ -382,22 +377,6 @@ h1, h2, h3, h4, h5, h6 {
 #nav-menu-container {
   float: right;
   margin: 0;
-}
-
-#nav-menu-container button{
-  background-color: transparent;
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  color: #fff;
-  font-weight: 700;
-  font-size: 13px;
-  display: inline-block;
-  padding: 4px 8px 10px 8px;
-}
-
-#nav-menu-container button:hover{
-  color: #42f57e;
-  transition: 0.3s;
 }
 
 @media (min-width: 1024px) {
