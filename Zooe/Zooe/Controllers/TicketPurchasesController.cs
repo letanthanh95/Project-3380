@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using Zooe.Team10;
 
 namespace Zooe.Controllers
@@ -34,10 +33,9 @@ namespace Zooe.Controllers
                 return NotFound();
             }
 
-                var ticketPurchase = await _context.TicketPurchase
+            var ticketPurchase = await _context.TicketPurchase
                 .Include(t => t.Customer)
                 .FirstOrDefaultAsync(m => m.TicketId == id);
-
             if (ticketPurchase == null)
             {
                 return NotFound();
@@ -165,26 +163,6 @@ namespace Zooe.Controllers
         private bool TicketPurchaseExists(int id)
         {
             return _context.TicketPurchase.Any(e => e.TicketId == id);
-        }
-
-        public IActionResult Purchase()
-        {
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "Customer_ID");
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Purchase([Bind("TransactionId,CustomerId,TicketId,Price,ExpirationDate,PurchaseDate,IsValid")] TicketPurchase ticketPurchase)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(ticketPurchase);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "Customer_ID", ticketPurchase.CustomerId);
-            return View(ticketPurchase);
         }
     }
 }

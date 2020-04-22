@@ -102,13 +102,7 @@ namespace Zooe.Controllers
             {
                 try
                 {
-                    Event _event = _context.Event.Where(s => s.EventId == @event.EventId).First();
-                    _event.DepartmentId = @event.DepartmentId;
-                    _event.Date = @event.Date;
-                    _event.Location = @event.Location;
-                    _event.ImageUrl = @event.ImageUrl;
-                    _event.Description = @event.Description;
-                    _context.Update(_event);
+                    _context.Update(@event);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

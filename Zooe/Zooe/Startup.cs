@@ -11,8 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Zooe.Team10;
-using Zooe.Models;
- 
+
 namespace Zooe
 {
     public class Startup
@@ -36,9 +35,6 @@ namespace Zooe
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<Team10Context>();
-
-            services.Add(new ServiceDescriptor(typeof(ReportContext), new ReportContext(Configuration.GetConnectionString("DefaultConnection"))));
-
 
             services.AddControllersWithViews();
             services.AddRazorPages();

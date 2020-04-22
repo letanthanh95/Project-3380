@@ -99,7 +99,7 @@ namespace Zooe.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ExhibitId,DepartmentId,AnimalId,Name,ExhibitHabitat,Description,ImageUrl")] Exhibit exhibit)
-        { 
+        {
             if (id != exhibit.ExhibitId)
             {
                 return NotFound();
@@ -109,14 +109,7 @@ namespace Zooe.Controllers
             {
                 try
                 {
-                    Exhibit _exhibit = _context.Exhibit.Where(s => s.ExhibitId == exhibit.ExhibitId).First();
-                    _exhibit.DepartmentId = exhibit.DepartmentId;
-                    _exhibit.AnimalId = exhibit.AnimalId;
-                    _exhibit.Name = exhibit.Name;
-                    _exhibit.ExhibitHabitat = exhibit.ExhibitHabitat;
-                    _exhibit.Description = exhibit.Description;
-                    _exhibit.ImageUrl = exhibit.ImageUrl;
-                    _context.Update(_exhibit);
+                    _context.Update(exhibit);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Zooe.Models;
-using Zooe.Team10;
 
 namespace Zooe.Controllers
 {
@@ -29,6 +28,7 @@ namespace Zooe.Controllers
             return View();
         }
 
+        //Do not move, we need to make a database entity, model, and controller for ticket.
         public IActionResult TicketIndex()
         {
             return View();
@@ -38,40 +38,27 @@ namespace Zooe.Controllers
         {
             return View();
         }
-
         public IActionResult Cart()
         {
             return View();
         }
-
         public IActionResult Checkout()
         {
             return View();
         }
-
         public IActionResult Admin()
         {
             return View();
         }
-
+        public IActionResult TicketCheckout()
+        {
+            return View();
+        }
         public IActionResult Card()
         {
             return View();
         }
 
-        [HttpGet("{firstName}/{lastName}/{address}")]
-
-        public string GetQuery(string id, string firstName, string lastName, string address)
-        {
-            return $"{firstName}:{lastName}:{address}";
-        }
-        public IActionResult Report()
-        {
-            Models.ReportContext context = HttpContext.RequestServices.GetService(typeof(Models.ReportContext)) as Models.ReportContext;
-
-            return View(context.GetReports());
-        }
-        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
