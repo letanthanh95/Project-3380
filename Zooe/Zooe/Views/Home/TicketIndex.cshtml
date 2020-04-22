@@ -1,6 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+@model Zooe.Team10.TicketPurchase
+
 @{
     ViewData["Title"] = "TicketIndex";
     Layout = "_Layout";
@@ -37,6 +39,7 @@
         display: block !important;
     }
 </style>
+
 <body style="background-color:#949085">
     <section class="container">
         <h1 style="text-align:center;margin-top:100px">Tickets</h1>
@@ -184,78 +187,87 @@
                         <div class="col">
                             <p id="total1"></p>
                         </div>
-                        
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p id="kidOutput"></p>
+                        </div>
+                        <div class="col">
+                            <p id="total2"></p>
+                        </div>
+                    </div>
+                    <div>
+
+                        <div class="row">
+                            <div class="col">
+                                <p id="adultOutput"></p>
+                            </div>
+                            <div class="col">
+                                <p id="total1"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <p id="familyOutput"></p>
+                            </div>
+                            <div class="col">
+                                <p id="total3"></p>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col">
+                                <p id="specialOutput"></p>
+                            </div>
+                            <div class="col" style="border-bottom:1px solid black">
+                                <p id="total4"></p>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p id="kidOutput"></p>
+                                <h4>Total:</h4>
                             </div>
                             <div class="col">
-                                <p id="total2"></p>
-                            </div>
-                        </div>
-                        <div>
-
-                            <div class="row">
-                                <div class="col">
-                                    <p id="adultOutput"></p>
-                                </div>
-                                <div class="col">
-                                    <p id="total1"></p>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col">
-                                    <p id="familyOutput"></p>
-                                </div>
-                                <div class="col">
-                                    <p id="total3"></p>
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col">
-                                    <p id="specialOutput"></p>
-                                </div>
-                                <div class="col" style="border-bottom:1px solid black">
-                                    <p id="total4"></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <h4>Total:</h4>
-                                </div>
-                                <div class="col">
-                                    <p id="total5"></p>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col">
-                                    <button class="btn btn-primary btn-sm" onclick="showModal()">Cancel</button>
-                                </div>
-
-                                @if (SignInManager.IsSignedIn(User))
-                                {
-                                    <div class="col">
-                                        <a class="btn btn-primary" href="@Url.Action("Card", "Home")" role="button">Check Out</a>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="col">
-                                        <a asp-area="Identity" asp-page="/Account/Login">Sign In</a><p>to Check Out</p>
-                                    </div>
-                                }
-
+                                <p id="total5"></p>
                             </div>
                         </div>
 
+                        <form asp-action="Purchase">
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>
+
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-primary btn-sm" onclick="showModal()">Cancel</button>
+                            </div>
+
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <div class="col">
+                                    <a class="btn btn-primary" href="@Url.Action("Card", "Home")" role="button">Check Out</a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col">
+                                    <a asp-area="Identity" asp-page="/Account/Login">Sign In</a><p>to Check Out</p>
+                                </div>
+                            }
+
+                        </div>
                     </div>
+
+                </div>
             </div>
         </div>
+
+
+
         <button class="btn btn-primary btn-sm" onclick="showModal()">Book</button>
     </section>
     <script>
