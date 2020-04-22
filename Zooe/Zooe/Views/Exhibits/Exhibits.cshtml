@@ -42,7 +42,7 @@
                                 <h2 class="title">@Html.DisplayFor(modeItem => item.Name)</h2>
                                 <p class="exhibit-p">
                                     @Html.DisplayFor(modeItem => item.Description)
-                                    @if (SignInManager.IsSignedIn(User))
+                                    @if (ViewContext.HttpContext.User.IsInRole("Admin,Staff"))
                                     {
                                         <div>
                                             <p>

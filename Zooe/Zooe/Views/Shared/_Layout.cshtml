@@ -87,12 +87,23 @@
 
                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                     {
-                        <li class="nav-item">
-                            <a asp-area="" asp-controller="Admin" asp-action="Index" title="Admin">Dashboard</a>
+                        <li class="menu-has-children">
+                            <a href="" style="text-decoration:none">Admin</a>
+                            <ul>
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="Admin" asp-action="Index" title="Admin">Dashboard</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="Role" asp-action="Index" title="Role">Role</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-area="" asp-controller="Report" asp-action="Index" title="Report">Report</a>
+                                </li>
+
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a asp-area="" asp-controller="Role" asp-action="Index" title="Role">Role</a>
-                        </li>
+                        
                     }
 
                     @if (ViewContext.HttpContext.User.IsInRole("Staff"))
@@ -118,7 +129,7 @@
                     else
                     {
                         <li class="menu-has-children">
-                            <a href="" style="text-decoration:none">Account</a>
+                            <a asp-area="Identity" asp-page="/Account/Login" style="text-decoration:none">Account</a>
                             <ul>
                                 <li class="nav-item">
                                     <a asp-area="Identity" asp-page="/Account/Login">Login</a>
