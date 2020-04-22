@@ -27,8 +27,17 @@ namespace Zooe
         public void ConfigureServices(IServiceCollection services)
         {
             services.Add(new ServiceDescriptor(typeof(Team10Context), new Team10Context(Configuration.GetConnectionString("DefaultConnection"))));
-            services.AddDbContext<Team10Context>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<Team10Context>();
+
+            services.AddDbContext<Team10Context>(
+                options => options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<Team10Context>();
+
+            services.AddControllersWithViews();
+            services.AddRazorPages();
             services.AddMvc();
         }
 

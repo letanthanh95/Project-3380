@@ -111,8 +111,6 @@ namespace Zooe.Controllers
                     _staff.Salary = staff.Salary;
                     _context.Update(_staff);
                     await _context.SaveChangesAsync();
-//                    _context.Update(staff);
-//                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
