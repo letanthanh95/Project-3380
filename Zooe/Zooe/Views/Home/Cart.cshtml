@@ -3,7 +3,11 @@
     ViewData["Title"] = "Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+    <style>
+        #header {
+            background-color: black;
+        }
+    </style>
 <!--================Cart Area =================-->
 <form method="post">
     <section class="cart_area section_padding">
@@ -137,7 +141,7 @@
                         </tbody>
                     </table>
                     <div class="checkout_btn_inner float-right">
-                        <a class="btn_1" href="@Url.Action("ShopIndex","Home")">Continue Shopping</a>
+                       
                         <a class="btn_1 checkout_btn_1" href="@Url.Action("Checkout","Home")">Proceed to checkout</a>
                     </div>
                 </div>

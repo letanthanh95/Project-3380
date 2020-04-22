@@ -23,7 +23,7 @@ namespace Zooe.Areas.Identity.Pages.Account.Manage
         }
 
         public string Username { get; set; }
-
+        
         [TempData]
         public string StatusMessage { get; set; }
 
@@ -35,18 +35,22 @@ namespace Zooe.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+            [Display(Name = "Name")]
+            public string Name { get; set; }
+            
         }
 
         private async Task LoadAsync(IdentityUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-
+            var name = await _userManager.GetUserNameAsync(user);
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                Name = name
             };
         }
 
@@ -77,6 +81,7 @@ namespace Zooe.Areas.Identity.Pages.Account.Manage
             }
 
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            
             if (Input.PhoneNumber != phoneNumber)
             {
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
