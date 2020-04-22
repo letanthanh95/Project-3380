@@ -105,6 +105,17 @@ namespace Zooe.Controllers
             {
                 try
                 {
+                    PrivateEvent _privateEvent = _context.PrivateEvent.Where(s => s.EventId == @privateEvent.EventId).First();
+                    _privateEvent.DepartmentId = @privateEvent.DepartmentId;
+                    _privateEvent.EventDate = @privateEvent.EventDate;
+                    _privateEvent.Price = @privateEvent.Price;
+                    _privateEvent.GuestCapacity = @privateEvent.GuestCapacity;
+                    _privateEvent.Location = @privateEvent.Location;
+                    _privateEvent.EventType = @privateEvent.EventType;
+                    _privateEvent.ImageUrl = @privateEvent.ImageUrl;
+                    _privateEvent.Description = @privateEvent.Description;
+                    _privateEvent.IsBooked = @privateEvent.IsBooked;
+
                     _context.Update(privateEvent);
                     await _context.SaveChangesAsync();
                 }

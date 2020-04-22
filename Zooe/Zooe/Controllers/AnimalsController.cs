@@ -101,6 +101,15 @@ namespace Zooe.Controllers
             {
                 try
                 {
+                    Animal _animal = _context.Animal.Where(s => s.AnimalId == @animal.AnimalId).First();
+                    _animal.ExhibitId = @animal.ExhibitId;
+                    _animal.Name = @animal.Name;
+                    _animal.Class = @animal.Class;
+                    _animal.Birthdate = @animal.Birthdate;
+                    _animal.LastCheckup = @animal.LastCheckup;
+                    _animal.Weight = @animal.Weight;
+                    _animal.Gender = @animal.Gender;
+                    _animal.ShortDescription = @animal.ShortDescription;
                     _context.Update(animal);
                     await _context.SaveChangesAsync();
                 }
