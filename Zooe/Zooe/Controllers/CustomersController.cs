@@ -96,6 +96,16 @@ namespace Zooe.Controllers
             {
                 try
                 {
+                    Customer _customer = _context.Customer.Where(s => s.CustomerId == @customer.CustomerId).First();
+                    _customer.FirstName = @customer.FirstName;
+                    _customer.LastName = @customer.LastName;
+                    _customer.PhoneNumber = @customer.PhoneNumber;
+                    _customer.Email = @customer.Email;
+                    _customer.StreetName = @customer.StreetName;
+                    _customer.ZipCode = @customer.ZipCode;
+                    _customer.City = @customer.City;
+                    _customer.State = @customer.State;
+                    _customer.Password = @customer.Password;
                     _context.Update(customer);
                     await _context.SaveChangesAsync();
                 }
