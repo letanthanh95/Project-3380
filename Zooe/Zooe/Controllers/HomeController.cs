@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -59,6 +59,19 @@ namespace Zooe.Controllers
             return View();
         }
 
+        [HttpGet("{firstName}/{lastName}/{address}")]
+
+        public string GetQuery(string id, string firstName, string lastName, string address)
+        {
+            return $"{firstName}:{lastName}:{address}";
+        }
+        public IActionResult Report()
+        {
+            Models.ReportContext context = HttpContext.RequestServices.GetService(typeof(Models.ReportContext)) as Models.ReportContext;
+
+            return View(context.GetReports());
+        }
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
