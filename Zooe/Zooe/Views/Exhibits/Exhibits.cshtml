@@ -41,20 +41,21 @@
                                 </div>
                                 <h2 class="title">@Html.DisplayFor(modeItem => item.Name)</h2>
                                 <p class="exhibit-p">
-                                    @Html.DisplayFor(modeItem => item.Description)
-                                    @if (ViewContext.HttpContext.User.IsInRole("Admin,Staff"))
-                                    {
-                                        <div>
-                                            <p>
-                                                <a asp-action="Edit" asp-route-id="@item.ExhibitId">Edit</a> |
-                                                <a asp-action="Details" asp-route-id="@item.ExhibitId">Details</a> |
-                                                <a asp-action="Delete" asp-route-id="@item.ExhibitId">Delete</a>
-                                            </p>
-                                        </div>
-                                    }
-                                </div>
+                                @Html.DisplayFor(modeItem => item.Description)
+                                @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                                {
+                                    <div>
+                                        <p>
+                                            <a asp-action="Edit" asp-route-id="@item.ExhibitId">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.ExhibitId">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.ExhibitId">Delete</a>
+                                        </p>
+                                    </div>
+                                }
+                            </div>
                         </div>
                     }
+                    </div>
 
                     @*
                         <div class="col-md-4 wow fadeInUp">

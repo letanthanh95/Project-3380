@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<Zooe.Team10.TicketPurchase>
 
 @{
-    Layout = null;
-}
+    ViewData["Title"] = "Ticket Purchases";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";}
 
 <!DOCTYPE html>
 
@@ -10,10 +11,21 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    
+    <title>Title</title>
+    <style>
+        #header {
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
+
+<header class="section-header" style="margin-top:100px">
+    <h3>Ticket Purchases</h3>
+</header>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table">
     <thead>

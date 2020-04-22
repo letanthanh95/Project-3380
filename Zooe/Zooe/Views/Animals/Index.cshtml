@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<Zooe.Team10.Animal>
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Animals";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,43 +12,55 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    
+    <title>Title</title>
+    <style>
+        #header {
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
+
+<header class="section-header" style="margin-top:100px">
+    <h3>Animals</h3>
+</header>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Class)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Birthdate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastCheckup)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Weight)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ShortDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Exhibit)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastCheckup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Exhibit)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -78,7 +92,7 @@
                 <a asp-action="Delete" asp-route-id="@item.AnimalId">Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
 </body>

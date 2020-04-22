@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Zooe.Team10.Exhibit>
 
 @{
+    ViewData["Title"] = "Exhibits";
     Layout = "_Layout";
 }
 
@@ -8,40 +9,49 @@
 
 
 <html>
-    <body id="exhibit-body">
-        <main id="main">
-            <section id="about">
-                <div class="container">
 
-                    <header class="section-header">
-                        <h3>Exhibits</h3>
-                    </header>
+<head>
+    <style>
+    #header {
+        background-color: black;
+    }
+    </style>
+    
+</head>
+<body id="exhibit-body">
+<main id="main">
+    <section id="about">
+        <div class="container">
 
-                    <div class="row about-cols">
-                        @foreach (var item in Model)
-                        {
-                            <div class="exhibit-col-md-4 cold-md-4 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="exhibit-col about-col">
-                                    <div class="exhibit-img">
-                                        <img src="@Html.DisplayFor(modelItem =>item.ImageUrl)" alt="@Html.DisplayFor(modelItem => item.Name)" class="img-fluid">
-                                    </div>
-                                    <h2 class="title">@Html.DisplayFor(modeItem => item.Name)</h2>
-                                    <p class="exhibit-p">
-                                        @Html.DisplayFor(modeItem => item.Description)
-                                    </p>
-                                    <p>
+            <header class="section-header">
+                <h3>Exhibits</h3>
+            </header>
 
-                                        <a asp-action="Edit" asp-route-id="@item.ExhibitId">Edit</a> |
-                                        <a asp-action="Details" asp-route-id="@item.ExhibitId">Details</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.ExhibitId">Delete</a>
-                                    </p>
-                                </div>
+            <div class="row about-cols">
+                @foreach (var item in Model)
+                {
+                    <div class="exhibit-col-md-4 cold-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="exhibit-col about-col">
+                            <div class="exhibit-img">
+                                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="@Html.DisplayFor(modelItem => item.Name)" class="img-fluid">
                             </div>
-                        }
+                            <h2 class="title">@Html.DisplayFor(modeItem => item.Name)</h2>
+                            <p class="exhibit-p">
+                                @Html.DisplayFor(modeItem => item.Description)
+                            </p>
+                            <p>
+
+                                <a asp-action="Edit" asp-route-id="@item.ExhibitId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.ExhibitId">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.ExhibitId">Delete</a>
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </section>
-        </main>
-    </body>
+                }
+            </div>
+        </div>
+    </section>
+</main>
+</body>
 </html>
 
