@@ -1,4 +1,5 @@
-﻿@inject SignInManager<IdentityUser> SignInManager
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
 <!DOCTYPE html>
@@ -86,12 +87,7 @@
 
                     @if (SignInManager.IsSignedIn(User))
                     {
-<<<<<<< HEAD
                         <li >
-=======
-                        <!--style.css > #nav-container button & button:hover -->
-                        <li class="nav-item">
->>>>>>> master
                             <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
                         </li>
                         <li >
