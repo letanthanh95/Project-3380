@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -57,6 +57,20 @@ namespace Zooe.Controllers
         public IActionResult Card()
         {
             return View();
+        }
+
+        public IActionResult Report()
+        {
+            Models.ReportContext context = HttpContext.RequestServices.GetService(typeof(Models.ReportContext)) as Models.ReportContext;
+
+            return View(context.GetReports());
+        }
+        
+        public IActionResult ReportT()
+        {
+            Models.ReportContext context = HttpContext.RequestServices.GetService(typeof(Models.ReportContext)) as Models.ReportContext;
+
+            return View(context.GetReportsT());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

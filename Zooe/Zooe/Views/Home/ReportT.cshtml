@@ -1,0 +1,80 @@
+@model IEnumerable<Zooe.Team10.TicketPurchase>
+@{
+    ViewData["Title"] = "Report";
+    Layout = "_Layout";
+}
+
+    <html>
+    <body>
+        <table class="container">
+          <tr></tr>  
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @if (item == Model.First())
+                        {
+                            <p>Average Cost of Purchases: @Html.DisplayTextFor(modelitem => item.TransactionId)   </p>
+                        }
+                        else
+                        {@Html.DisplayTextFor(modelitem => item.TransactionId)}
+                    </td>
+                    <td>
+                        @if (item == Model.First())
+                        {
+                        <p>Total Number of Transactions: @Html.DisplayTextFor(modelitem => item.CustomerId)    </p>}
+                        else
+                        {@Html.DisplayTextFor(modelitem => item.CustomerId)}
+                    </td>
+                    <td>
+                        @if (item == Model.First())
+                        {
+                            <p> Total Tickets Sold: @Html.DisplayTextFor(modelitem => item.TicketId)    </p> }
+                        else
+                        {@Html.DisplayTextFor(modelitem => item.TicketId)}
+                    </td>
+                    <td>
+                        @if ((Html.DisplayTextFor(modelitem => item.Price)).ToString() != "0")
+                        {
+                            @Html.DisplayTextFor(modelitem => item.Price)}
+                        else { }
+                    </td>
+                    <td>
+                        @if ((Html.DisplayTextFor(modelitem => item.Price)).ToString() != "0")
+                        {
+                            @Html.DisplayTextFor(modelitem => item.ExpirationDate)}
+                        else { }
+                    </td>
+                    <td>
+                        @if ((Html.DisplayTextFor(modelitem => item.Price)).ToString() != "0")
+                        {
+                            @Html.DisplayTextFor(modelitem => item.PurchaseDate)}
+                        else { }
+                    </td>
+                </tr>
+                @if (item == Model.First()) {
+        <tr>
+            <td>
+                TransactionID
+            </td>
+            <td>
+                CustomerID
+            </td>
+            <td>
+                TicketID
+            </td>
+            <td>
+                Price
+            </td>
+            <td>
+                Expiration Date
+            </td>
+            <td>
+                Purchase Date
+            </td>
+        </tr>}
+            }
+
+        </table>
+    </body>
+    </html>

@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
@@ -98,12 +98,15 @@
                                     <a asp-area="" asp-controller="Role" asp-action="Index" title="Role">Role</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-area="" asp-controller="Report" asp-action="Index" title="Report">Report</a>
+                                    <!--<a asp-area="" asp-controller="Report" asp-action="Index" title="Report">Report</a>-->
+                                    @Html.ActionLink("Item Sales Report", "Report", "Home")
                                 </li>
-
+                                <li class="nav-item">
+                                    <!--<a asp-area="" asp-controller="Report" asp-action="Index" title="Report">Report</a>-->
+                                    @Html.ActionLink("Ticket Sales Report", "ReportT", "Home")
+                                </li>
                             </ul>
                         </li>
-                        
                     }
 
                     @if (ViewContext.HttpContext.User.IsInRole("Staff"))
