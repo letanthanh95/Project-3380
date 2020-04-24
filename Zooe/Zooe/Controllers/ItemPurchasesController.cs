@@ -48,8 +48,8 @@ namespace Zooe.Controllers
         // GET: ItemPurchases/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "City");
-            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ImageUrl");
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "CustomerId");
+            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "Title");
             return View();
         }
 
@@ -66,8 +66,8 @@ namespace Zooe.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "City", itemPurchase.CustomerId);
-            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ImageUrl", itemPurchase.ItemId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "CustomerId", itemPurchase.CustomerId);
+            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "Title", itemPurchase.ItemId);
             return View(itemPurchase);
         }
 
@@ -84,8 +84,8 @@ namespace Zooe.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "City", itemPurchase.CustomerId);
-            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ImageUrl", itemPurchase.ItemId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "CustomerId", itemPurchase.CustomerId);
+            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "Title", itemPurchase.ItemId);
             return View(itemPurchase);
         }
 
@@ -127,8 +127,8 @@ namespace Zooe.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "City", itemPurchase.CustomerId);
-            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ImageUrl", itemPurchase.ItemId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "CustomerId", itemPurchase.CustomerId);
+            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "Title", itemPurchase.ItemId);
             return View(itemPurchase);
         }
 
