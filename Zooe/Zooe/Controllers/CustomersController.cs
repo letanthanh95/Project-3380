@@ -105,7 +105,6 @@ namespace Zooe.Controllers
                     _customer.ZipCode = customer.ZipCode;
                     _customer.City = customer.City;
                     _customer.State = customer.State;
-                    _customer.Password = customer.Password;
                     _context.Update(_customer);
                     await _context.SaveChangesAsync();
                 }

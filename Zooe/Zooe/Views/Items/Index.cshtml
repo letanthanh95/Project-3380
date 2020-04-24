@@ -10,24 +10,24 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #000000;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
 </head>
-<style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    td, th {
-        border: 1px solid #000000;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-</style>
 <body>
     <main id="main">
         <section id="about">
@@ -39,6 +39,9 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Shop)
+                            </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.Title)
                             </th>
@@ -52,9 +55,6 @@
                                 @Html.DisplayNameFor(model => model.StockCount)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Shop)
-                            </th>
-                            <th>
                                 <a asp-action="Create"><img src="@Url.Content("http://icons.iconarchive.com/icons/dryicons/sketchy-paper/32/create-new-page-icon.png")">Create New</a>
                             </th>
                         </tr>
@@ -64,19 +64,19 @@
                         {
                             <tr>
                                 <td>
+                                    @Html.DisplayFor(modelItem => item.Shop.ShopName)
+                                </td>
+                                <td>
                                     @Html.DisplayFor(modelItem => item.Title)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ImageUrl)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Price)
+                                    $@Html.DisplayFor(modelItem => item.Price)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.StockCount)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Shop.Description)
                                 </td>
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.ItemId"><img src="@Url.Content("http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-10/16/Pencil-icon.png")" alt="Edit"></a> |

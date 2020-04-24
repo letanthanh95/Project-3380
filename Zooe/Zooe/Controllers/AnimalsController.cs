@@ -47,7 +47,7 @@ namespace Zooe.Controllers
         // GET: Animals/Create
         public IActionResult Create()
         {
-            ViewData["ExhibitId"] = new SelectList(_context.Exhibit, "ExhibitId", "Description");
+            ViewData["ExhibitId"] = new SelectList(_context.Exhibit, "ExhibitId", "Name");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace Zooe.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ExhibitId"] = new SelectList(_context.Exhibit, "ExhibitId", "Description", animal.ExhibitId);
+            ViewData["ExhibitId"] = new SelectList(_context.Exhibit, "ExhibitId", "Name", animal.ExhibitId);
             return View(animal);
         }
 
@@ -81,7 +81,7 @@ namespace Zooe.Controllers
             {
                 return NotFound();
             }
-            ViewData["ExhibitId"] = new SelectList(_context.Exhibit, "ExhibitId", "Description", animal.ExhibitId);
+            ViewData["ExhibitId"] = new SelectList(_context.Exhibit, "ExhibitId", "Name", animal.ExhibitId);
             return View(animal);
         }
 
@@ -126,7 +126,7 @@ namespace Zooe.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ExhibitId"] = new SelectList(_context.Exhibit, "ExhibitId", "Description", animal.ExhibitId);
+            ViewData["ExhibitId"] = new SelectList(_context.Exhibit, "ExhibitId", "Name", animal.ExhibitId);
             return View(animal);
         }
 
