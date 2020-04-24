@@ -33,41 +33,56 @@ namespace Zooe.Models
         {
             string dateFrom = "\'" + leftside + "\'";
             string dateTo = "\'" + rightside + "\'";
+
             List<ItemPurchase> list = new List<ItemPurchase>();
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
+                MySqlCommand cmdcheck = new MySqlCommand("SELECT count(*) tocheck FROM Item_Purchase where Purchase_Date BETWEEN " + dateFrom + " AND " + dateTo, conn);
                 MySqlCommand cmd1 = new MySqlCommand("SELECT AVG(Total_Cost) average_Cost FROM Item_Purchase where Purchase_Date BETWEEN " + dateFrom + " AND " + dateTo, conn);
                 MySqlCommand cmd2 = new MySqlCommand("select count(Transaction_ID) Numof_Sales from Item_Purchase where Purchase_Date BETWEEN " + dateFrom + " AND " + dateTo, conn);
                 MySqlCommand cmd3 = new MySqlCommand("select sum(Quantity) Count_Sales from Item_Purchase where Purchase_Date BETWEEN " + dateFrom + " AND " + dateTo, conn);
 
-                using (var reader1 = cmd1.ExecuteReader())
-                {
-
-                    while (reader1.Read())
+                using (var readercheck = cmdcheck.ExecuteReader()) {
+                    while (readercheck.Read())
                     {
-                        list.Add(new ItemPurchase
+                        int check = Convert.ToInt32(readercheck["tocheck"]);
+                        if (check == 0)
                         {
-                            TransactionId = Convert.ToInt32(reader1["Average_Cost"]),
-                        });
-
-
-                    }
-
-                }
-                using (var reader2 = cmd2.ExecuteReader())
-                {
-                    while (reader2.Read()) {
-                        list[0].ItemId = Convert.ToInt32(reader2["Numof_Sales"]);
+                            list.Add(new ItemPurchase());
+                            list[0].TransactionId = -1;
+                            return list;
+                        }
                     }
                 }
-                using (var reader3 = cmd3.ExecuteReader())
-                {
-                    while (reader3.Read()){ 
-                    list[0].CustomerId = Convert.ToInt32(reader3["Count_sales"]);
+                    using (var reader1 = cmd1.ExecuteReader())
+                    {
+
+                        while (reader1.Read())
+                        {
+                            list.Add(new ItemPurchase
+                            {
+                                TransactionId = Convert.ToInt32(reader1["Average_Cost"]),
+                            });
+
+
+                        }
+
                     }
-                }
-                return list;
+                    using (var reader2 = cmd2.ExecuteReader())
+                    {
+                        while (reader2.Read()) {
+                            list[0].ItemId = Convert.ToInt32(reader2["Numof_Sales"]);
+                        }
+                    }
+                    using (var reader3 = cmd3.ExecuteReader())
+                    {
+                        while (reader3.Read()) {
+                            list[0].CustomerId = Convert.ToInt32(reader3["Count_sales"]);
+                        }
+                    }
+                    return list;
+                
             }
         }
 
@@ -79,9 +94,24 @@ namespace Zooe.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
+                MySqlCommand cmdcheck = new MySqlCommand("SELECT count(*) tocheck FROM Ticket_Purchase where Purchase_Date BETWEEN " + dateFrom + " AND " + dateTo, conn);
                 MySqlCommand cmd1 = new MySqlCommand("SELECT AVG(Price) average_Cost FROM Ticket_Purchase where Purchase_Date BETWEEN " + dateFrom + " AND " + dateTo, conn);
                 MySqlCommand cmd2 = new MySqlCommand("select count(Transaction_ID) Numof_Sales from Ticket_Purchase where Purchase_Date BETWEEN " + dateFrom + " AND " + dateTo, conn);
                 MySqlCommand cmd3 = new MySqlCommand("select sum(Price) Count_Sales from Ticket_Purchase where Purchase_Date BETWEEN " + dateFrom + " AND " + dateTo, conn);
+
+                using (var readercheck = cmdcheck.ExecuteReader())
+                {
+                    while (readercheck.Read())
+                    {
+                        int check = Convert.ToInt32(readercheck["tocheck"]);
+                        if (check == 0)
+                        {
+                            list.Add(new TicketPurchase());
+                            list[0].TransactionId = -1;
+                            return list;
+                        }
+                    }
+                }
 
                 using (var reader1 = cmd1.ExecuteReader())
                 {
@@ -121,6 +151,7 @@ namespace Zooe.Models
             dateTo += " 23:59:59";
             List<ItemPurchase> list = SubReports(dateFrom, dateTo);
             //list.Add(SubReports());
+            
             dateFrom = "\'" + dateFrom + "\'";
             dateTo = "\'" + dateTo + "\'";
             using (MySqlConnection conn = GetConnection())
@@ -158,6 +189,10 @@ namespace Zooe.Models
             dateTo += " 23:59:59";
             List<ItemPurchase> list = SubReports(dateFrom,dateTo);
             //list.Add(SubReports());
+            if (list[0].TransactionId == -1)
+            {
+                return list;
+            }
             dateFrom = "\'" + dateFrom + "\'";
             dateTo = "\'" + dateTo + "\'";
             using (MySqlConnection conn = GetConnection())
@@ -195,6 +230,7 @@ namespace Zooe.Models
             dateTo += " 23:59:59";
             List<TicketPurchase> list = SubReportsT(dateFrom, dateTo);
             //list.Add(SubReports());
+            
             dateFrom = "\'" + dateFrom + "\'";
             dateTo = "\'" + dateTo + "\'";
             using (MySqlConnection conn = GetConnection())
@@ -233,6 +269,10 @@ namespace Zooe.Models
             dateTo += " 23:59:59";
             List<TicketPurchase> list = SubReportsT(dateFrom, dateTo);
             //list.Add(SubReports());
+            if (list[0].TransactionId == -1)
+            {
+                return list;
+            }
             dateFrom = "\'" + dateFrom + "\'";
             dateTo = "\'" + dateTo + "\'";
             using (MySqlConnection conn = GetConnection())
