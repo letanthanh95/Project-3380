@@ -21,7 +21,6 @@ namespace Zooe.Team10
         public int ZipCode { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public string Password { get; set; }
 
         public virtual ICollection<ItemPurchase> ItemPurchase { get; set; }
         public virtual ICollection<PrivateEventPurchase> PrivateEventPurchase { get; set; }

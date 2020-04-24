@@ -125,11 +125,6 @@ namespace Zooe.Team10
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.Password)
-                    .HasColumnType("varchar(32)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
                 entity.Property(e => e.PhoneNumber)
                     .IsRequired()
                     .HasColumnName("Phone_Number")

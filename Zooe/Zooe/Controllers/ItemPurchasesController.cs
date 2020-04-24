@@ -62,9 +62,29 @@ namespace Zooe.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(itemPurchase);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(itemPurchase);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ItemPurchaseExists(itemPurchase.TransactionId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                catch (DbUpdateException) //catches trigger errors
+                {
+                    var _item = await _context.Items.FindAsync(itemPurchase.ItemId);
+                    ViewData["Amount"] = _item.StockCount;
+                    return View("Error");
+                }
             }
             ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "CustomerId", itemPurchase.CustomerId);
             ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "Title", itemPurchase.ItemId);
@@ -113,6 +133,7 @@ namespace Zooe.Controllers
                     _itemPurchase.Quantity = itemPurchase.Quantity;
                     _context.Update(_itemPurchase);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -125,7 +146,6 @@ namespace Zooe.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
             ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "CustomerId", itemPurchase.CustomerId);
             ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "Title", itemPurchase.ItemId);

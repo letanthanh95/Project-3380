@@ -57,9 +57,27 @@ namespace Zooe.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(customer);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CustomerExists(customer.CustomerId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                catch (DbUpdateException) //catches trigger errors
+                {
+                    return View("Error");
+                }
             }
             return View(customer);
         }
@@ -107,6 +125,7 @@ namespace Zooe.Controllers
                     _customer.State = customer.State;
                     _context.Update(_customer);
                     await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -119,7 +138,10 @@ namespace Zooe.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                catch (DbUpdateException) //catches trigger errors
+                {
+                    return View("Error");
+                }
             }
             return View(customer);
         }
