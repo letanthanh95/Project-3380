@@ -47,7 +47,7 @@ namespace Zooe.Controllers
         // GET: TicketPurchases/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "City");
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "CustomerId");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace Zooe.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "City", ticketPurchase.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "CustomerId", ticketPurchase.CustomerId);
             return View(ticketPurchase);
         }
 
@@ -81,7 +81,7 @@ namespace Zooe.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "City", ticketPurchase.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "CustomerId", ticketPurchase.CustomerId);
             return View(ticketPurchase);
         }
 
@@ -126,7 +126,7 @@ namespace Zooe.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "City", ticketPurchase.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "CustomerId", ticketPurchase.CustomerId);
             return View(ticketPurchase);
         }
 
