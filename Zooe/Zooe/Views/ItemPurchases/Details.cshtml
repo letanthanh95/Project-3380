@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.TotalCost)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TotalCost)
+            $@Html.DisplayFor(model => model.TotalCost)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.PurchaseDate)
@@ -36,16 +36,16 @@
             @Html.DisplayFor(model => model.Quantity)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer)
+            @Html.DisplayNameFor(model => model.Customer.CustomerId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Customer.City)
+            @Html.DisplayFor(model => model.Customer.CustomerId)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Item)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Item.ImageUrl)
+            @Html.DisplayFor(model => model.Item.Title)
         </dd>
     </dl>
 </div>
