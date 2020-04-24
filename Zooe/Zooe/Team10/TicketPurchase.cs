@@ -14,5 +14,8 @@ namespace Zooe.Team10
         public sbyte IsValid { get; set; }
 
         public virtual Customer Customer { get; set; }
+
+        public string linput { get; set; }
+        public string rinput { get; set; }
     }
 }

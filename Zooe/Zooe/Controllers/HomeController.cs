@@ -58,19 +58,35 @@ namespace Zooe.Controllers
         {
             return View();
         }
-
+        
         public IActionResult Report()
         {
             Models.ReportContext context = HttpContext.RequestServices.GetService(typeof(Models.ReportContext)) as Models.ReportContext;
 
             return View(context.GetReports());
         }
-        
+
+        [HttpPost]
+        public IActionResult Report(Team10.ItemPurchase model)
+        {
+            Models.ReportContext context = HttpContext.RequestServices.GetService(typeof(Models.ReportContext)) as Models.ReportContext;
+
+            return View(context.GetReports(model));
+        }
+
         public IActionResult ReportT()
         {
             Models.ReportContext context = HttpContext.RequestServices.GetService(typeof(Models.ReportContext)) as Models.ReportContext;
 
             return View(context.GetReportsT());
+        }
+
+        [HttpPost]
+        public IActionResult ReportT(Team10.TicketPurchase model)
+        {
+            Models.ReportContext context = HttpContext.RequestServices.GetService(typeof(Models.ReportContext)) as Models.ReportContext;
+
+            return View(context.GetReportsT(model));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
