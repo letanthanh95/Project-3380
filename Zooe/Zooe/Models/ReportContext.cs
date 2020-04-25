@@ -125,10 +125,7 @@ namespace Zooe.Models
                         {
                             TransactionId = Convert.ToInt32(reader1["Average_Cost"]),
                         });
-
-
                     }
-
                 }
                 using (var reader2 = cmd2.ExecuteReader())
                 {
