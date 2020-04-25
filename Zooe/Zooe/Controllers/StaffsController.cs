@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Zooe.Team10;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Zooe.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class StaffsController : Controller
     {
         private readonly Team10Context _context;

@@ -21,7 +21,6 @@ namespace Zooe.Controllers
             _userManager = userManager;
         }
         
-        //[Authorize(Roles ="Admin")]
         public IActionResult Index()
         {
             return View();

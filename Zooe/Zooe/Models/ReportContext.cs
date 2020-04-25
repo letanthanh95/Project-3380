@@ -11,7 +11,6 @@ namespace Zooe.Models
 {
     public class ReportContext
     {
-        private readonly object Team10Context;
 
         public string ConnectionString { get; set; }
         public ReportContext(string connectionString)

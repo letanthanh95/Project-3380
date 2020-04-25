@@ -6,8 +6,7 @@
     ViewData["Title"] = "Exhibits";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    
-}
+
 
 <!DOCTYPE html>
 
@@ -46,8 +45,8 @@
                                     {
                                         <div>
                                             <p>
-                                                <a asp-action="Edit" asp-route-id="@item.ExhibitId">Edit</a> |
-                                                <a asp-action="Details" asp-route-id="@item.ExhibitId">Details</a> |
+                                                <a asp-action="Edit" asp-route-id="@item.ExhibitId">Edit</a>
+                                                <a asp-action="Details" asp-route-id="@item.ExhibitId">Details</a>
                                                 <a asp-action="Delete" asp-route-id="@item.ExhibitId">Delete</a>
                                             </p>
                                         </div>
