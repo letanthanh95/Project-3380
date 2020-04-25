@@ -28,12 +28,12 @@ namespace Zooe.Models
             return $"{firstName}:{lastName}:{address}";
         }
 
-        public List<ItemPurchase> SubReports(string leftside, string rightside)
+        public List<ReportModel> SubReports(string leftside, string rightside)
         {
             string dateFrom = "\'" + leftside + "\'";
             string dateTo = "\'" + rightside + "\'";
 
-            List<ItemPurchase> list = new List<ItemPurchase>();
+            List<ReportModel> list = new List<ReportModel>();
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
@@ -49,7 +49,7 @@ namespace Zooe.Models
                         int check = Convert.ToInt32(readercheck["tocheck"]);
                         if (check == 0)
                         {
-                            list.Add(new ItemPurchase());
+                            list.Add(new ReportModel());
                             list[0].TransactionId = -1;
                             return list;
                         }
@@ -60,7 +60,7 @@ namespace Zooe.Models
 
                     while (reader1.Read())
                     {
-                        list.Add(new ItemPurchase
+                        list.Add(new ReportModel
                         {
                             TransactionId = Convert.ToInt32(reader1["Average_Cost"]),
                         });
@@ -88,11 +88,11 @@ namespace Zooe.Models
             }
         }
 
-        public List<TicketPurchase> SubReportsT(string leftside, string rightside)
+        public List<ReportModelT> SubReportsT(string leftside, string rightside)
         {
             string dateFrom = "\'" + leftside + "\'";
             string dateTo = "\'" + rightside + "\'";
-            List<TicketPurchase> list = new List<TicketPurchase>();
+            List<ReportModelT> list = new List<ReportModelT>();
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
@@ -108,7 +108,7 @@ namespace Zooe.Models
                         int check = Convert.ToInt32(readercheck["tocheck"]);
                         if (check == 0)
                         {
-                            list.Add(new TicketPurchase());
+                            list.Add(new ReportModelT());
                             list[0].TransactionId = -1;
                             return list;
                         }
@@ -120,7 +120,7 @@ namespace Zooe.Models
 
                     while (reader1.Read())
                     {
-                        list.Add(new TicketPurchase
+                        list.Add(new ReportModelT
                         {
                             TransactionId = Convert.ToInt32(reader1["Average_Cost"]),
                         });
@@ -144,13 +144,13 @@ namespace Zooe.Models
             }
         }
 
-        public List<ItemPurchase> GetReports()
+        public List<ReportModel> GetReports()
         {
             string dateFrom = "2010-10-03";
             dateFrom += " 00:00:01";
             string dateTo = "2030-12-31";
             dateTo += " 23:59:59";
-            List<ItemPurchase> list = SubReports(dateFrom, dateTo);
+            List<ReportModel> list = SubReports(dateFrom, dateTo);
             //list.Add(SubReports());
 
             dateFrom = "\'" + dateFrom + "\'";
@@ -164,7 +164,7 @@ namespace Zooe.Models
                 {
                     while (reader.Read())
                     {
-                        list.Add(new ItemPurchase
+                        list.Add(new ReportModel
                         {
                             TransactionId = Convert.ToInt32(reader["Transaction_Id"]),
                             ItemId = Convert.ToInt32(reader["Item_Id"]),
@@ -182,13 +182,13 @@ namespace Zooe.Models
 
         }
         [HttpPost]
-        public List<ItemPurchase> GetReports(Team10.ItemPurchase model)
+        public List<ReportModel> GetReports(Models.ReportModel model)
         {
             string dateFrom = model.linput.ToString();
             dateFrom += " 00:00:01";
             string dateTo = model.rinput.ToString();
             dateTo += " 23:59:59";
-            List<ItemPurchase> list = SubReports(dateFrom, dateTo);
+            List<ReportModel> list = SubReports(dateFrom, dateTo);
             //list.Add(SubReports());
             if (list[0].TransactionId == -1)
             {
@@ -205,7 +205,7 @@ namespace Zooe.Models
                 {
                     while (reader.Read())
                     {
-                        list.Add(new ItemPurchase
+                        list.Add(new ReportModel
                         {
                             TransactionId = Convert.ToInt32(reader["Transaction_Id"]),
                             ItemId = Convert.ToInt32(reader["Item_Id"]),
@@ -223,13 +223,13 @@ namespace Zooe.Models
 
         }
 
-        public List<TicketPurchase> GetReportsT()
+        public List<ReportModelT> GetReportsT()
         {
             string dateFrom = "2010-10-03";
             dateFrom += " 00:00:01";
             string dateTo = "2030-12-31";
             dateTo += " 23:59:59";
-            List<TicketPurchase> list = SubReportsT(dateFrom, dateTo);
+            List<ReportModelT> list = SubReportsT(dateFrom, dateTo);
             //list.Add(SubReports());
             if (list[0].TransactionId == -1)
             {
@@ -246,7 +246,7 @@ namespace Zooe.Models
                 {
                     while (reader.Read())
                     {
-                        list.Add(new TicketPurchase
+                        list.Add(new ReportModelT
                         {
                             TransactionId = Convert.ToInt32(reader["Transaction_Id"]),
                             CustomerId = Convert.ToInt32(reader["Customer_Id"]),
@@ -265,13 +265,13 @@ namespace Zooe.Models
         }
 
         [HttpPost]
-        public List<TicketPurchase> GetReportsT(Team10.TicketPurchase model)
+        public List<ReportModelT> GetReportsT(Models.ReportModelT model)
         {
             string dateFrom = model.linput.ToString();
             dateFrom += " 00:00:01";
             string dateTo = model.rinput.ToString();
             dateTo += " 23:59:59";
-            List<TicketPurchase> list = SubReportsT(dateFrom, dateTo);
+            List<ReportModelT> list = SubReportsT(dateFrom, dateTo);
             //list.Add(SubReports());
             dateFrom = "\'" + dateFrom + "\'";
             dateTo = "\'" + dateTo + "\'";
@@ -284,7 +284,7 @@ namespace Zooe.Models
                 {
                     while (reader.Read())
                     {
-                        list.Add(new TicketPurchase
+                        list.Add(new ReportModelT
                         {
                             TransactionId = Convert.ToInt32(reader["Transaction_Id"]),
                             CustomerId = Convert.ToInt32(reader["Customer_Id"]),

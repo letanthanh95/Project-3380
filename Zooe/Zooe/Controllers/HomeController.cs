@@ -67,7 +67,7 @@ namespace Zooe.Controllers
         }
 
         [HttpPost]
-        public IActionResult Report(Team10.ItemPurchase model)
+        public IActionResult Report(Models.ReportModel model)
         {
             Models.ReportContext context = HttpContext.RequestServices.GetService(typeof(Models.ReportContext)) as Models.ReportContext;
 
@@ -82,7 +82,7 @@ namespace Zooe.Controllers
         }
 
         [HttpPost]
-        public IActionResult ReportT(Team10.TicketPurchase model)
+        public IActionResult ReportT(Models.ReportModelT model)
         {
             Models.ReportContext context = HttpContext.RequestServices.GetService(typeof(Models.ReportContext)) as Models.ReportContext;
 

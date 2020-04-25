@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Zooe.Team10;
 
 namespace Zooe.Models
 {
-    public class ReportModel
+    public partial class ReportModel
     {
-        public List<ItemPurchase> item { get; set; }
+        public int TransactionId { get; set; }
+        public int ItemId { get; set; }
+        public int CustomerId { get; set; }
+        public float TotalCost { get; set; }
+        public DateTime PurchaseDate { get; set; }
+        public int Quantity { get; set; }
+        public string linput { get; set; }
+        public string rinput { get; set; }
+
     }
 }

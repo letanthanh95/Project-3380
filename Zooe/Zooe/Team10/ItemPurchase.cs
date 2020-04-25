@@ -14,7 +14,6 @@ namespace Zooe.Team10
 
         public virtual Customer Customer { get; set; }
         public virtual Items Item { get; set; }
-        public string linput { get; set; }
-        public string rinput { get; set; }
+       
     }
 }

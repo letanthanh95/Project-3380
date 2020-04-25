@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Zooe.Team10
+namespace Zooe.Models
 {
-    public partial class TicketPurchase
+    public partial class ReportModelT
     {
         public int TransactionId { get; set; }
         public int CustomerId { get; set; }
@@ -12,8 +12,8 @@ namespace Zooe.Team10
         public DateTime ExpirationDate { get; set; }
         public DateTime PurchaseDate { get; set; }
         public sbyte IsValid { get; set; }
-
-        public virtual Customer Customer { get; set; }
-
+        public string linput { get; set; }
+        public string rinput { get; set; }
+    
     }
 }
