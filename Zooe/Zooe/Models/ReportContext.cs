@@ -184,6 +184,14 @@ namespace Zooe.Models
         [HttpPost]
         public List<ReportModel> GetReports(Models.ReportModel model)
         {
+            if (model.linput == null || model.rinput == null)
+            {
+
+                List<ReportModel> rist = new List<ReportModel>();
+                rist.Add(new ReportModel());
+                rist[0].TransactionId = -1;
+                return rist;
+            }
             string dateFrom = model.linput.ToString();
             dateFrom += " 00:00:01";
             string dateTo = model.rinput.ToString();
@@ -267,6 +275,14 @@ namespace Zooe.Models
         [HttpPost]
         public List<ReportModelT> GetReportsT(Models.ReportModelT model)
         {
+            if (model.linput == null || model.rinput == null)
+            {
+
+                List<ReportModelT> rist = new List<ReportModelT>();
+                rist.Add(new ReportModelT());
+                rist[0].TransactionId = -1;
+                return rist;
+            }
             string dateFrom = model.linput.ToString();
             dateFrom += " 00:00:01";
             string dateTo = model.rinput.ToString();
