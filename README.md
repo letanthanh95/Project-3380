@@ -6,7 +6,7 @@ We use ASP NET Core 3.0 on Visual Studio 2017 or 2019 to write the program for f
 - Front-end is stored in `Views` folders
 - Back-end is stored in `Team10` and `Controllers` folders 
 - CSS-JS files, images are stored in `wwwroot` folders
-- Our SQL dump
+- Our SQL dump is in the folder `Database Dump`
 # User Roles
 We have two main roles: Admin and User
 - Admin will update the changes like edit and delete staffs', animals' and customers' information. Admin can create User account and other admin account. Moreover, admin can buy tickets, items and book events
@@ -28,7 +28,7 @@ Please note that a password **requires** at leasts 6 characters, a capital lette
 # Reports
 - Ticket sale report
 - Shop sale report
-Both reports are viewable via *admin* login in the dropdown. You can view the data between selected dates.
+Both reports are viewable via *admin* login in the dropdown. You can view the data between selected dates as well.
 # Author
 - Thanh Le
 - Ana Alcocer
