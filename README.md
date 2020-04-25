@@ -19,7 +19,11 @@ We have previously created accounts that allow you to enter the website:
 - Password for both: Zoodb10!
 # Creating a new account
 Our project allows anyone to register. We have a dropdown for easy convience to register under a certain role, it updates the database in realtime. 
-Please note that a password **requires** at leasts 6 characters, a capital letter, and a special character
+Please note that a password **requires** at leasts 
+- 6 characters
+- a capital letter
+- a special character
+Please make sure to **CONFIRM** your account once you create it, otherwise it will not work when you sign in.
 # Triggers
 **Three Triggers** 
 - The email cannot be duplicated.
