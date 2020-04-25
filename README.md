@@ -23,6 +23,9 @@ Please note that a password **requires** at leasts
 - 6 characters
 - a capital letter
 - a special character
+
+
+
 Please make sure to **CONFIRM** your account once you create it, otherwise it will not work when you sign in.
 # Triggers
 **Three Triggers** 
