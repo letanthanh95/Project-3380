@@ -14,9 +14,9 @@ We have two main roles: Admin and User
 * There are other roles that you can create and edit but our main ones are admin and user.
 # Login
 We have previously created accounts that allow you to enter the website:
-admin@zoo.com
-user@zoo.com
-Password for both: Zoodb10!
+- admin@zoo.com
+- user@zoo.com
+- Password for both: Zoodb10!
 # Creating a new account
 Our project allows anyone to register. We have a dropdown for easy convience to register under a certain role, it updates the database in realtime. 
 Please note that a password **requires** at leasts 6 characters, a capital letter, and a special character
